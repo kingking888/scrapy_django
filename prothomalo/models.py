@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -13,10 +14,11 @@ class Category(models.Model):
 
 
 class News(models.Model):
-    title = models.TextField()
+    title = models.TextField(unique=True)
     description = models.TextField()
     image = models.TextField()
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "Newse"

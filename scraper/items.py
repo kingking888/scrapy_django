@@ -7,7 +7,6 @@
 
 
 from scrapy_djangoitem import DjangoItem
-# from ...prothomalo.models import News
 from prothomalo.models import News
 
 class NewsItem(DjangoItem):

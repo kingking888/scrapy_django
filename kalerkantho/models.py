@@ -23,7 +23,7 @@ class News(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        verbose_name = "Newse"
+        verbose_name_plural = "Newses"
 
     def __str__(self):
         return self.title

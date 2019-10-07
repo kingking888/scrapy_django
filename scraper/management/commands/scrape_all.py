@@ -18,21 +18,13 @@ class Command(BaseCommand):
         for command in self.commands:
             proc = Popen(command, shell=True, stdin=stdin, stdout=stdout, stderr=stderr)
             proc_list.append(proc)
-            # proc.kill()
 
-        for proc in proc_list:
-            proc.kill()
-
-
-        # try:
-        #     while True:
-        #         time.sleep(10)
-        # except KeyboardInterrupt:
-        #     for proc in proc_list:
-        #         os.kill(proc.pid, signal.SIGKILL)
-
-        # for proc in proc_list:
-        #     os.kill(proc.pid, signal.SIGKILL)
+        try:
+            while True:
+                time.sleep(10)
+        except KeyboardInterrupt:
+            for proc in proc_list:
+                os.kill(proc.pid, signal.SIGKILL)
 
 
 

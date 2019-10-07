@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8542689b-539d-4aca-8049-3fad7c946dd3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scrapy_django.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scrapy_django.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prothomalo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/prothomalo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/management/commands/crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/management/commands/prothomalo_crawl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/spiders/prothomalo.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/spiders/prothomalo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/management/commands/scrape_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/management/commands/scrape_all.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +106,7 @@
       <workItem from="1570376461087" duration="1034000" />
       <workItem from="1570377926908" duration="412000" />
       <workItem from="1570378363035" duration="7460000" />
-      <workItem from="1570415866468" duration="18147000" />
+      <workItem from="1570415866468" duration="19650000" />
     </task>
     <servers />
   </component>

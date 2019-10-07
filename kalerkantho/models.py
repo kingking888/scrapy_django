@@ -3,14 +3,14 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    class Meta:
-        verbose_name = "Categorie"
-
-    def __str__(self):
-        return self.name
+# class Category(models.Model):
+#     name = models.CharField(max_length=255)
+#
+#     class Meta:
+#         verbose_name = "Categorie"
+#
+#     def __str__(self):
+#         return self.name
 
 
 class News(models.Model):

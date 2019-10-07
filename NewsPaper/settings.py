@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 CREATED_APPS = [
     'prothomalo',
+    'kalerkantho',
     'scraper',
 ]
 

@@ -8,7 +8,11 @@
 
 class ScraperPipeline(object):
     def process_item(self, item, spider):
-        item.save()
-        return item
+        try:
+            item.save()
+            return item
+        except Exception as e:
+            print("Exception handling:", e)
+
 
 

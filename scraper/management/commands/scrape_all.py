@@ -10,6 +10,7 @@ class Command(BaseCommand):
     commands = [
         'python manage.py prothomalo_crawl',
         'python manage.py kalerkantho_crawl',
+        'python manage.py ittefaq_crawl',
     ]
 
     def handle(self, *args, **options):

@@ -9,6 +9,7 @@
 from scrapy_djangoitem import DjangoItem
 from prothomalo.models import News as ProthomaloNews
 from kalerkantho.models import News as KalerkanthoNews
+from ittefaq.models import News as IttefaqNews
 
 
 class ProthomaloNewsItem(DjangoItem):
@@ -17,3 +18,7 @@ class ProthomaloNewsItem(DjangoItem):
 
 class KalerkanthoNewsItem(DjangoItem):
     django_model = KalerkanthoNews
+
+
+class IttefaqNewsItem(DjangoItem):
+    django_model = IttefaqNews

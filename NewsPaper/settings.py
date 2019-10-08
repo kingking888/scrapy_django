@@ -35,7 +35,12 @@ CREATED_APPS = [
     'kalerkantho',
     'ittefaq',
     'bdprotidin',
+    'api',
     'scraper',
+]
+
+DOWNLOADED_APPS = [
+    'rest_framework',
 ]
 
 INSTALLED_APPS = [
@@ -45,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-] + CREATED_APPS
+] + CREATED_APPS + DOWNLOADED_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

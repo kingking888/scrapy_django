@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import IttefaqNewsItem
+from ittefaq.models import Category
 
 
 class IttefaqSpider(scrapy.Spider):
@@ -46,6 +47,7 @@ class IttefaqSpider(scrapy.Spider):
         item['description'] = description
         item['image'] = 'https://' + self.allowed_domains[0] + response.css('.dtl_img_block img::attr(src)').extract_first()
         item['url'] = response.request.url
+        item['source'] = 'Ittefaq'
 
         if 'sports' in response.request.url:
             self.category = 'sports'
@@ -64,6 +66,6 @@ class IttefaqSpider(scrapy.Spider):
         if 'scienceandtechnology' in response.request.url:
             self.category = 'technology'
 
-        item['category'] = self.category
+        item['category'] = Category.objects.get(name=self.category)
 
         yield item

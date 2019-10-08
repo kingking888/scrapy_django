@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8542689b-539d-4aca-8049-3fad7c946dd3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdprotidin/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdprotidin/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bdprotidin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bdprotidin/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ittefaq/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ittefaq/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ittefaq/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ittefaq/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalerkantho/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/kalerkantho/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kalerkantho/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kalerkantho/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prothomalo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/prothomalo/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prothomalo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/prothomalo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/items.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/pipelines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/spiders/bdprotidin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/spiders/bdprotidin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/spiders/ittefaq.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/spiders/ittefaq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/spiders/kalerkantho.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/spiders/kalerkantho.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/spiders/prothomalo.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/spiders/prothomalo.py" afterDir="false" />
     </list>
@@ -26,48 +29,48 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ittefaq/models.py">
+        <entry file="file://$PROJECT_DIR$/scraper/spiders/prothomalo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+            <state relative-caret-position="115">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#24#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bdprotidin/models.py">
+        <entry file="file://$PROJECT_DIR$/scraper/spiders/bdprotidin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
+            <state relative-caret-position="483">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kalerkantho/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#24#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/prothomalo/models.py">
+        <entry file="file://$PROJECT_DIR$/scraper/spiders/ittefaq.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="52">
+              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#24#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scraper/spiders/kalerkantho.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,28 +91,30 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/prothomalo/admin.py" />
         <option value="$PROJECT_DIR$/scraper/management/commands/ittefaq_crawl.py" />
-        <option value="$PROJECT_DIR$/scraper/spiders/ittefaq.py" />
         <option value="$PROJECT_DIR$/scraper/management/commands/scrape_all.py" />
-        <option value="$PROJECT_DIR$/NewsPaper/settings.py" />
-        <option value="$PROJECT_DIR$/ittefaq/admin.py" />
-        <option value="$PROJECT_DIR$/bdprotidin/admin.py" />
         <option value="$PROJECT_DIR$/scraper/items.py" />
         <option value="$PROJECT_DIR$/scraper/management/commands/bdprotidin_crawl.py" />
         <option value="$PROJECT_DIR$/scraper/pipelines.py" />
-        <option value="$PROJECT_DIR$/scraper/spiders/bdprotidin.py" />
-        <option value="$PROJECT_DIR$/scraper/spiders/prothomalo.py" />
-        <option value="$PROJECT_DIR$/scraper/spiders/kalerkantho.py" />
         <option value="$PROJECT_DIR$/run.py" />
-        <option value="$PROJECT_DIR$/ittefaq/models.py" />
+        <option value="$PROJECT_DIR$/NewsPaper/urls.py" />
+        <option value="$PROJECT_DIR$/NewsPaper/settings.py" />
+        <option value="$PROJECT_DIR$/prothomalo/admin.py" />
         <option value="$PROJECT_DIR$/prothomalo/models.py" />
-        <option value="$PROJECT_DIR$/kalerkantho/models.py" />
+        <option value="$PROJECT_DIR$/kalerkantho/admin.py" />
+        <option value="$PROJECT_DIR$/ittefaq/admin.py" />
+        <option value="$PROJECT_DIR$/bdprotidin/admin.py" />
         <option value="$PROJECT_DIR$/bdprotidin/models.py" />
+        <option value="$PROJECT_DIR$/ittefaq/models.py" />
+        <option value="$PROJECT_DIR$/kalerkantho/models.py" />
+        <option value="$PROJECT_DIR$/scraper/spiders/prothomalo.py" />
+        <option value="$PROJECT_DIR$/scraper/spiders/bdprotidin.py" />
+        <option value="$PROJECT_DIR$/scraper/spiders/kalerkantho.py" />
+        <option value="$PROJECT_DIR$/scraper/spiders/ittefaq.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -127,21 +132,6 @@
             <path>
               <item name="scrapy_django" type="b2602c69:ProjectViewProjectNode" />
               <item name="scrapy_django" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scrapy_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scrapy_django" type="462c0819:PsiDirectoryNode" />
-              <item name="ittefaq" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scrapy_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scrapy_django" type="462c0819:PsiDirectoryNode" />
-              <item name="kalerkantho" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="scrapy_django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="scrapy_django" type="462c0819:PsiDirectoryNode" />
-              <item name="prothomalo" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -165,14 +155,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\development\Python\professional\scrapy_django" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\development\Python\professional\scrapy_django\scraper" />
       <recent name="E:\development\Python\professional\scrapy_django" />
       <recent name="E:\development\Python\professional\scrapy_django\scraper\scraper\management" />
       <recent name="E:\development\Python\professional\scrapy_django\scraper\scraper" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\development\Python\professional\scrapy_django" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -227,15 +217,15 @@
       <workItem from="1570378363035" duration="7460000" />
       <workItem from="1570415866468" duration="20817000" />
       <workItem from="1570452536882" duration="12634000" />
-      <workItem from="1570538429165" duration="9034000" />
+      <workItem from="1570538429165" duration="17233000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21668000" />
+    <option name="totallyTimeSpent" value="29867000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1802949" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -251,7 +241,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.35077792" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -296,16 +286,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/prothomalo/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraper/management/commands/scrape_all.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -313,13 +293,6 @@
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewsPaper/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -342,26 +315,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ittefaq/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bdprotidin/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scraper/management/commands/prothomalo_crawl.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -399,43 +352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scraper/spiders/bdprotidin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="e#24#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraper/spiders/prothomalo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="62" column="41" selection-start-line="61" selection-start-column="8" selection-end-line="62" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraper/spiders/ittefaq.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1014">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scraper/spiders/kalerkantho.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scraper/management/commands/ittefaq_crawl.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -453,20 +369,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ittefaq/models.py">
+    <entry file="file://$PROJECT_DIR$/NewsPaper/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+          <folding>
+            <element signature="e#633#665#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewsPaper/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prothomalo/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
-          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kalerkantho/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="25" selection-start-line="10" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bdprotidin/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ittefaq/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bdprotidin/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
+        <state relative-caret-position="184">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ittefaq/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -475,8 +448,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kalerkantho/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+        <state relative-caret-position="230">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -485,10 +458,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/prothomalo/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="345">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraper/spiders/prothomalo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraper/spiders/bdprotidin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraper/spiders/kalerkantho.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scraper/spiders/ittefaq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

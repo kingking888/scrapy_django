@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import KalerkanthoNewsItem
+from kalerkantho.models import Category
 
 
 class KalerkanthoSpider(scrapy.Spider):
@@ -43,6 +44,7 @@ class KalerkanthoSpider(scrapy.Spider):
         item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url
+        item['source'] = 'Kaler Kantho'
 
         if 'sport' in response.request.url:
             self.category = 'sports'
@@ -63,7 +65,7 @@ class KalerkanthoSpider(scrapy.Spider):
         if 'miscellaneous' in response.request.url:
             self.category = 'pachmishali'
 
-        item['category'] = self.category
+        item['category'] = Category.objects.get(name=self.category)
 
         yield item
 

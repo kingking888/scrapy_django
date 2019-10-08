@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import ProthomaloNewsItem
+from prothomalo.models import Category
+
 
 class ProthomaloSpider(scrapy.Spider):
     category = ''
@@ -26,8 +28,6 @@ class ProthomaloSpider(scrapy.Spider):
 
             yield response.follow(news_url, callback=self.parse_news)
 
-
-
     def parse_news(self, response):
 
         def listToString(s):
@@ -38,10 +38,12 @@ class ProthomaloSpider(scrapy.Spider):
             return (str1.join(s))
 
         item = ProthomaloNewsItem()
+
         item['title'] = response.css('.mb10 ::text').extract_first()
         item['description'] = listToString(response.css('div[itemprop=articleBody] p ::text').extract())
         item['image'] = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
         item['url'] = response.request.url
+        item['source'] = 'Prothom Alo'
 
         if 'sports' in response.request.url:
             self.category = 'sports'
@@ -62,7 +64,7 @@ class ProthomaloSpider(scrapy.Spider):
         if 'pachmisheli' in response.request.url:
             self.category = 'pachmishali'
 
-        item['category'] = self.category
+        item['category'] = Category.objects.get(name=self.category)
 
         yield item
 

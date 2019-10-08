@@ -17,9 +17,9 @@ class News(models.Model):
     title = models.TextField(unique=True)
     description = models.TextField()
     image = models.TextField()
-    # category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
     url = models.TextField(null=True, blank=True)
     category = models.CharField(max_length=200, blank=True, null=True)
+    source = models.CharField(max_length=200, null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:

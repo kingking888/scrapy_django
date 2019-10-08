@@ -17,6 +17,7 @@ class KalerkanthoSpider(scrapy.Spider):
             'https://www.kalerkantho.com/online/sport/1',
             'https://www.kalerkantho.com/online/lifestyle/1',
             'https://www.kalerkantho.com/online/info-tech/1',
+            'https://www.kalerkantho.com/online/miscellaneous/1'
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
@@ -59,6 +60,8 @@ class KalerkanthoSpider(scrapy.Spider):
             self.category = 'technology'
         if 'lifestyle' in response.request.url:
             self.category = 'life-style'
+        if 'miscellaneous' in response.request.url:
+            self.category = 'pachmishali'
 
         item['category'] = self.category
 

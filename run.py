@@ -8,3 +8,4 @@ def subprocess_cmd(command):
 subprocess_cmd('python manage.py prothomalo_crawl')
 subprocess_cmd('python manage.py kalerkantho_crawl')
 subprocess_cmd('python manage.py ittefaq_crawl')
+subprocess_cmd('python manage.py bdprotidin_crawl')

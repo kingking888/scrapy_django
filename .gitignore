@@ -255,3 +255,7 @@ fabric.properties
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/pycharm,python,django
+.idea/vcs.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scrapy_django.iml

@@ -34,6 +34,7 @@ CREATED_APPS = [
     'prothomalo',
     'kalerkantho',
     'ittefaq',
+    'bdprotidin',
     'scraper',
 ]
 

@@ -259,3 +259,6 @@ fabric.properties
 .idea/misc.xml
 .idea/modules.xml
 .idea/scrapy_django.iml
+
+venv/
+env/

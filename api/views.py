@@ -1,9 +1,8 @@
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
 
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import permission_classes
 from rest_framework import permissions
 from rest_framework.response import Response
 
@@ -16,53 +15,29 @@ from all_news.models import Category as AllNewsCategory
 from .serializers import AllNewsSerializer
 from .serializers import AllNewsCategorySerializer
 
-hours = 2
+hours = 24
+latest_hours = 2
 
 
-###########################Generic###########################################################
-class AllNewsAPIView(generics.ListAPIView):
-    now = datetime.datetime.now()
-    earlier = now - datetime.timedelta(hours=hours)
-
-    queryset = AllNews.objects.filter(date__range=(earlier, now))
-    serializer_class = AllNewsSerializer
-
-
-class HomePageApiView(generics.ListAPIView):
-    now = datetime.datetime.now()
-    earlier = now - datetime.timedelta(hours=hours)
-
-    num_entities = AllNews.objects.filter(date__range=(earlier, now)).count()
-    rand_entities = random.sample(range(num_entities), 20)
-
-    queryset = AllNews.objects.filter(date__range=(earlier, now), pk__in=rand_entities)
-    serializer_class = AllNewsSerializer
-
-
-class AllNewsCategoryAPIView(generics.ListAPIView):
-    queryset = AllNewsCategory.objects.all()
-    serializer_class = AllNewsCategorySerializer
-
-
-
-######################################### without generic ##############################################
-@permission_classes((permissions.IsAdminUser,))
-class HomePageApiViewRealTime(APIView):
+@permission_classes((permissions.IsAuthenticated,))
+class HomePageApiView(APIView):
     def get(self, request):
 
         now = datetime.datetime.now()
-        earlier = now - datetime.timedelta(hours=hours)
+        earlier = now - datetime.timedelta(hours=latest_hours)
 
         num_entities = AllNews.objects.filter(date__range=(earlier, now)).count()
-        rand_entities = random.sample(range(num_entities), 5)
+        first_value = AllNews.objects.filter()[:1].get().pk
+        rand_entities = random.sample(range(num_entities), 20)
+        rand_entities = [x + first_value-1 for x in rand_entities]
 
         news = AllNews.objects.filter(date__range=(earlier, now), pk__in=rand_entities)
         data = AllNewsSerializer(news, many=True).data
         return Response(data)
 
 
-@permission_classes((permissions.IsAdminUser,))
-class AllNewsApiViewRealtime(APIView):
+@permission_classes((permissions.IsAuthenticated,))
+class NewsApiView(APIView):
     def get(self, request):
 
         now = datetime.datetime.now()
@@ -73,8 +48,8 @@ class AllNewsApiViewRealtime(APIView):
         return Response(data)
 
 
-@permission_classes((permissions.IsAdminUser,))
-class DetailNewsApiViewRealtime(APIView):
+@permission_classes((permissions.IsAuthenticated,))
+class DetailNewsApiView(APIView):
     def get(self, request, pk):
 
         now = datetime.datetime.now()
@@ -82,4 +57,13 @@ class DetailNewsApiViewRealtime(APIView):
 
         news = get_object_or_404(AllNews, pk=pk, date__range=(earlier, now))
         data = AllNewsSerializer(news).data
+        return Response(data)
+
+
+
+@permission_classes((permissions.IsAuthenticated,))
+class CategoryApiView(APIView):
+    def get(self, request):
+        categories = AllNewsCategory.objects.all()
+        data = AllNewsCategorySerializer(categories, many=True).data
         return Response(data)

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scraper.items import ProthomaloNewsItem
-from prothomalo.models import Category
+from scraper.items import ProthomaloNewsItem, AllNewsItem
+# from prothomalo.models import Category, News
+from all_news.models import Category
+from django.shortcuts import get_object_or_404
 
 
 class ProthomaloSpider(scrapy.Spider):
@@ -25,7 +27,6 @@ class ProthomaloSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.has_image a ::attr("href")').extract():
-
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -37,7 +38,7 @@ class ProthomaloSpider(scrapy.Spider):
             # return string
             return (str1.join(s))
 
-        item = ProthomaloNewsItem()
+        item = AllNewsItem()
 
         item['title'] = response.css('.mb10 ::text').extract_first()
         item['description'] = listToString(response.css('div[itemprop=articleBody] p ::text').extract())

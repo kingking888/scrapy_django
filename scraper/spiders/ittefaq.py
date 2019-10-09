@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scraper.items import IttefaqNewsItem
-from ittefaq.models import Category
+from scraper.items import IttefaqNewsItem, AllNewsItem
+# from ittefaq.models import Category
+from all_news.models import Category
 
 
 class IttefaqSpider(scrapy.Spider):
@@ -39,7 +40,7 @@ class IttefaqSpider(scrapy.Spider):
             # return string
             return (str1.join(s))
 
-        item = IttefaqNewsItem()
+        item = AllNewsItem()
         item['title'] = response.css('.dtl_hl_block h1::text').extract_first()
         description = listToString(response.css('.dtl_content_block span::text').extract())
         if not description:

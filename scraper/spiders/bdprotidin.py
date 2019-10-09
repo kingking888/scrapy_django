@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
 import scrapy
-from scraper.items import BdprotidinNewsItem
-from bdprotidin.models import Category
-
+from scraper.items import BdprotidinNewsItem, AllNewsItem
+# from bdprotidin.models import Category
+from all_news.models import Category
 
 class BdprotidinSpider(scrapy.Spider):
     category = ''
@@ -39,7 +39,7 @@ class BdprotidinSpider(scrapy.Spider):
         def remove_tags(text):
             return TAG_RE.sub('', text)
 
-        item = BdprotidinNewsItem()
+        item = AllNewsItem()
 
         item['title'] = response.css('.post-title ::text').extract_first()
         item['description'] = remove_tags(response.xpath("//article").extract_first()).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1551006634778-0'); });", "").strip()

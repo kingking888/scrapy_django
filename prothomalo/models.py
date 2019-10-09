@@ -19,7 +19,6 @@ class News(models.Model):
     description = models.TextField()
     image = models.TextField()
     url = models.TextField(null=True, blank=True)
-    # category = models.CharField(max_length=200, blank=True, null=True)
     category = models.ForeignKey('Category', blank=True, null=True, on_delete=models.CASCADE)
     source = models.CharField(max_length=200, null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)

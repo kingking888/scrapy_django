@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scraper.items import KalerkanthoNewsItem
-from kalerkantho.models import Category
-
+from scraper.items import KalerkanthoNewsItem, AllNewsItem
+# from kalerkantho.models import Category
+from all_news.models import Category
 
 class KalerkanthoSpider(scrapy.Spider):
     category = ''
@@ -26,8 +26,6 @@ class KalerkanthoSpider(scrapy.Spider):
     def parse(self, response):
         for news_url in response.css('.n_row a::attr("href")').extract():
 
-            # print("crawled news: "+news_url)
-
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -39,7 +37,7 @@ class KalerkanthoSpider(scrapy.Spider):
             # return string
             return (str1.join(s))
 
-        item = KalerkanthoNewsItem()
+        item = AllNewsItem()
         item['title'] = response.css('h2::text').extract_first()
         item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()

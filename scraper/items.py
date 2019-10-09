@@ -11,6 +11,7 @@ from prothomalo.models import News as ProthomaloNews
 from kalerkantho.models import News as KalerkanthoNews
 from ittefaq.models import News as IttefaqNews
 from bdprotidin.models import News as BdprotidinNews
+from all_news.models import News as AllNews
 
 
 class ProthomaloNewsItem(DjangoItem):
@@ -27,3 +28,6 @@ class IttefaqNewsItem(DjangoItem):
 
 class BdprotidinNewsItem(DjangoItem):
     django_model = BdprotidinNews
+
+class AllNewsItem(DjangoItem):
+    django_model = AllNews

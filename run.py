@@ -5,6 +5,7 @@ def subprocess_cmd(command):
     proc_stdout = process.communicate()[0].strip()
     print(proc_stdout)
 
+
 subprocess_cmd('python manage.py prothomalo_crawl')
 subprocess_cmd('python manage.py kalerkantho_crawl')
 subprocess_cmd('python manage.py ittefaq_crawl')

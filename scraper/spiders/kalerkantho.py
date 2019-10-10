@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import AllNewsItem
-from all_news.models import Category
+from all_news.models import Category, News
+from django.db import IntegrityError
+from django.shortcuts import get_object_or_404
 
 class KalerkanthoSpider(scrapy.Spider):
     category = ''
@@ -23,8 +25,8 @@ class KalerkanthoSpider(scrapy.Spider):
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
     def parse(self, response):
-        for news_url in response.css('.n_row a::attr("href")').extract():
 
+        for news_url in response.css('.n_row a::attr("href")').extract():
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):

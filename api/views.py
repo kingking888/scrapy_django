@@ -15,7 +15,7 @@ from all_news.models import Category as AllNewsCategory
 from .serializers import AllNewsSerializer
 from .serializers import AllNewsCategorySerializer
 
-hours = 24
+hours = 6
 latest_hours = 24
 
 

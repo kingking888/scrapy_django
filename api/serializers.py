@@ -5,6 +5,7 @@ from all_news.models import Category as AllNewsCategory
 
 
 class AllNewsSerializer(serializers.ModelSerializer):
+    category = serializers.StringRelatedField()
 
     class Meta:
         model = AllNews
@@ -12,7 +13,9 @@ class AllNewsSerializer(serializers.ModelSerializer):
 
 
 class AllNewsCategorySerializer(serializers.ModelSerializer):
+    newses = AllNewsSerializer(many=True, read_only=True)
 
     class Meta:
         model = AllNewsCategory
-        fields = ('__all__')
+        fields = ('name', 'newses')
+

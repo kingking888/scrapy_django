@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import re
 import scrapy
-from scraper.items import BdprotidinNewsItem, AllNewsItem
-# from bdprotidin.models import Category
+from scraper.items import AllNewsItem
 from all_news.models import Category
+
 
 class BdprotidinSpider(scrapy.Spider):
     category = ''

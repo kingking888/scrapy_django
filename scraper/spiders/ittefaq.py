@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scraper.items import IttefaqNewsItem, AllNewsItem
-# from ittefaq.models import Category
+from scraper.items import AllNewsItem
 from all_news.models import Category
 
 

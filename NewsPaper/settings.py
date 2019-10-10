@@ -31,10 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 CREATED_APPS = [
-    'prothomalo',
-    'kalerkantho',
-    'ittefaq',
-    'bdprotidin',
     'all_news',
     'api',
     'scraper',

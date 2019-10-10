@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scraper.items import ProthomaloNewsItem, AllNewsItem
-# from prothomalo.models import Category, News
+from scraper.items import AllNewsItem
 from all_news.models import Category
-from django.shortcuts import get_object_or_404
 
 
 class ProthomaloSpider(scrapy.Spider):

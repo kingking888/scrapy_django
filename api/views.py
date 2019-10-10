@@ -16,7 +16,7 @@ from .serializers import AllNewsSerializer
 from .serializers import AllNewsCategorySerializer
 
 hours = 24
-latest_hours = 2
+latest_hours = 24
 
 
 @permission_classes((permissions.IsAuthenticated,))
@@ -67,3 +67,4 @@ class CategoryApiView(APIView):
         categories = AllNewsCategory.objects.all()
         data = AllNewsCategorySerializer(categories, many=True).data
         return Response(data)
+

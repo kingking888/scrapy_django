@@ -38,6 +38,8 @@ CREATED_APPS = [
 
 DOWNLOADED_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 INSTALLED_APPS = [

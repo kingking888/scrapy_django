@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import AllNewsItem
-from all_news.models import Category
+from all_news.models import Category, News
 
 
 class ProthomaloSpider(scrapy.Spider):
@@ -25,6 +25,7 @@ class ProthomaloSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.has_image a ::attr("href")').extract():
+
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):

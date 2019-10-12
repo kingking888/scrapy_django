@@ -1,11 +1,12 @@
 from django.urls import path, include
 
-from .views import HomePageApiView, NewsApiView, DetailNewsApiView, CategoryApiView
+from .views import RecentApiView, NewsApiView, DetailNewsApiView, AllCategoryApiView, NewsCategoryApiView
 
 
 urlpatterns = [
-    path('news/', NewsApiView.as_view()),
-    path('homepage/', HomePageApiView.as_view()),
-    path('news/<int:pk>/', DetailNewsApiView.as_view()),
-    path('category/', CategoryApiView.as_view()),
+    path('news/', NewsApiView.as_view(), name='all_news'),
+    path('news/category/<str:name>/', NewsCategoryApiView.as_view(), name='single_category'),
+    path('recent/', RecentApiView.as_view(), name='recent'),
+    path('news/<int:pk>/', DetailNewsApiView.as_view(), name="news_detail"),
+    path('category/', AllCategoryApiView.as_view(), name='all_category'),
 ]

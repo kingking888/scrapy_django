@@ -6,7 +6,7 @@ from .views import RecentApiView, NewsApiView, DetailNewsApiView, AllCategoryApi
 urlpatterns = [
     path('news/', NewsApiView.as_view(), name='all_news'),
     path('news/category/<str:name>/', NewsCategoryApiView.as_view(), name='single_category'),
-    path('recent/', RecentApiView.as_view(), name='recent'),
+    path('news/recent/', RecentApiView.as_view(), name='recent'),
     path('news/<int:pk>/', DetailNewsApiView.as_view(), name="news_detail"),
-    path('category/', AllCategoryApiView.as_view(), name='all_category'),
+    path('news/category/', AllCategoryApiView.as_view(), name='all_category'),
 ]

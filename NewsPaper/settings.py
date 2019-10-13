@@ -84,24 +84,21 @@ WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+from config.db import DATABASES
+
+DATABASES = DATABASES
+
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.mysql', # do not change it
+#         'NAME': 'newsapi$NewsDB1',  # add database_name
+#         'USER' : 'newsapi',  # add user_name
+#         'PASSWORD' : 'Nis001@DB',  # add password_here
+#         'HOST' : 'newsapi.mysql.pythonanywhere-services.com', # add host_name
+#         'PORT' : '', # leave blank
 #     }
 # }
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # do not change it
-        'NAME': 'newsapi$NewsDB1',  # add database_name
-        'USER' : 'newsapi',  # add user_name
-        'PASSWORD' : 'Nis001@DB',  # add password_here
-        'HOST' : 'newsapi.mysql.pythonanywhere-services.com', # add host_name
-        'PORT' : '', # leave blank
-    }
-}
 
 
 # Password validation

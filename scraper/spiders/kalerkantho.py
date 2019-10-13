@@ -60,7 +60,7 @@ class KalerkanthoSpider(scrapy.Spider):
         if 'info-tech' in response.request.url:
             self.category = 'technology'
         if 'lifestyle' in response.request.url:
-            self.category = 'life-style'
+            self.category = 'lifestyle'
         if 'miscellaneous' in response.request.url:
             self.category = 'pachmishali'
 

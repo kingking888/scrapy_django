@@ -18,7 +18,8 @@ class ProthomaloSpider(scrapy.Spider):
             'https://www.prothomalo.com/topic/%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A6%BF?page=1',
             'https://www.prothomalo.com/technology/article?page=1',
             'https://www.prothomalo.com/life-style/article?page=1',
-            'https://www.prothomalo.com/pachmisheli/article?page=1'
+            'https://www.prothomalo.com/pachmisheli/article?page=1',
+            'https://www.prothomalo.com/opinion/article?page=1',
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
@@ -60,9 +61,11 @@ class ProthomaloSpider(scrapy.Spider):
         if 'technology' in response.request.url:
             self.category = 'technology'
         if 'life-style' in response.request.url:
-            self.category = 'life-style'
+            self.category = 'lifestyle'
         if 'pachmisheli' in response.request.url:
             self.category = 'pachmishali'
+        if 'opinion' in response.request.url:
+            self.category = 'opinion'
 
         item['category'] = Category.objects.get(name=self.category)
 

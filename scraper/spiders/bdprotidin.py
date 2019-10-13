@@ -64,7 +64,7 @@ class BdprotidinSpider(scrapy.Spider):
         if 'tech-world' in response.request.url:
             self.category = 'technology'
         if 'life' in response.request.url:
-            self.category = 'life-style'
+            self.category = 'lifestyle'
         if 'job-market' in response.request.url:
             self.category = 'job'
 

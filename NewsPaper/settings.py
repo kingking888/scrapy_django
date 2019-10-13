@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$q5ezq_w@d&deqac_f!vtqik#p4pn6mk_%417=f0m^#qdemqla'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,7 +39,6 @@ CREATED_APPS = [
 DOWNLOADED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
-    # 'corsheaders',
 ]
 
 INSTALLED_APPS = [
@@ -85,10 +84,22 @@ WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql', # do not change it
+        'NAME': 'newsapi$NewsDB1',  # add database_name
+        'USER' : 'newsapi',  # add user_name
+        'PASSWORD' : 'Nis001@DB',  # add password_here
+        'HOST' : 'newsapi.mysql.pythonanywhere-services.com', # add host_name
+        'PORT' : '', # leave blank
     }
 }
 
@@ -131,14 +142,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+if DEBUG:
+   STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+   ]
+else:
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

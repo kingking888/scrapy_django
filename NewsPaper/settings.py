@@ -23,7 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$q5ezq_w@d&deqac_f!vtqik#p4pn6mk_%417=f0m^#qdemqla'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+from config.config import DEBUG
+
+DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-from config.db import DATABASES
+from config.config import DATABASES
 
 DATABASES = DATABASES
 
@@ -136,11 +138,11 @@ STATIC_URL = '/static/'
 
 
 if DEBUG:
-   STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, 'static'),
-   ]
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+    ]
 else:
-   STATIC_ROOT = os.path.join(BASE_DIR,'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_URL = '/media/'

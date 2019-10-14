@@ -27,7 +27,6 @@ class JagoNews24Spider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in list(dict.fromkeys(response.css('#loadMoreContent a ::attr("href")').extract())):
-            print(news_url)
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):

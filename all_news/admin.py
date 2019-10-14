@@ -4,7 +4,7 @@ from .models import News, Category
 # Register your models here.
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'category', 'source')
+    list_display = ('title', 'description', 'category', 'source', 'url')
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)

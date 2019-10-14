@@ -91,17 +91,6 @@ from config.config import DATABASES
 DATABASES = DATABASES
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql', # do not change it
-#         'NAME': 'newsapi$NewsDB1',  # add database_name
-#         'USER' : 'newsapi',  # add user_name
-#         'PASSWORD' : 'Nis001@DB',  # add password_here
-#         'HOST' : 'newsapi.mysql.pythonanywhere-services.com', # add host_name
-#         'PORT' : '', # leave blank
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -151,6 +140,20 @@ else:
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+if DEBUG:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 
 REST_FRAMEWORK = {

@@ -209,6 +209,8 @@ config/
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+config/
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
@@ -257,3 +259,4 @@ config/
 # Pyre type checker
 
 # End of https://www.gitignore.io/api/python,django,pycharm
+.idea/workspace.xml___jb_tmp___

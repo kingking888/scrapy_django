@@ -28,9 +28,6 @@ class BdprotidinSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.lead-news-3nd a::attr("href")').extract():
-
-            # print("crawled news: "+news_url)
-
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -49,7 +46,7 @@ class BdprotidinSpider(scrapy.Spider):
 
         if 'sports' in response.request.url:
             self.category = 'sports'
-        if 'national' in response.request.url:
+        if '/national/' in response.request.url:
             self.category = 'bangladesh'
         if 'country' in response.request.url:
             self.category = 'bangladesh'
@@ -64,7 +61,7 @@ class BdprotidinSpider(scrapy.Spider):
         if 'tech-world' in response.request.url:
             self.category = 'technology'
         if 'life' in response.request.url:
-            self.category = 'life-style'
+            self.category = 'lifestyle'
         if 'job-market' in response.request.url:
             self.category = 'job'
 

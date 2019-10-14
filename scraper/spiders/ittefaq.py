@@ -24,9 +24,6 @@ class IttefaqSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.all_news_content_block a::attr("href")').extract():
-
-            # print("crawled news: "+news_url)
-
             yield response.follow(news_url, callback=self.parse_news)
 
 
@@ -54,7 +51,7 @@ class IttefaqSpider(scrapy.Spider):
         if 'national' in response.request.url:
             self.category = 'bangladesh'
         if 'politics' in response.request.url:
-            self.category = 'bangladesh'
+            self.category = 'politics'
         if 'wholecountry' in response.request.url:
             self.category = 'bangladesh'
         if 'worldnews' in response.request.url:

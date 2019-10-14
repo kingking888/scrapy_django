@@ -34,7 +34,7 @@ class RecentApiView(APIView):
             rand_entities = random.sample(range(num_entities), 20)
             rand_entities = [x + first_value-1 for x in rand_entities]
 
-            news = AllNews.objects.filter(date__range=(earlier, now), pk__in=rand_entities)
+            news = AllNews.objects.filter(date__range=(earlier, now), pk__in=rand_entities).order_by('-pk')
             data = AllNewsSerializer(news, many=True).data
             return Response(data)
         except Exception as e:
@@ -49,7 +49,7 @@ class NewsApiView(APIView):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)
 
-        newses = AllNews.objects.filter(date__range=(earlier, now))
+        newses = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
         data = AllNewsSerializer(newses, many=True).data
         return Response(data)
 
@@ -61,7 +61,7 @@ class NewsCategoryApiView(APIView):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)
 
-        newses = AllNews.objects.filter(category__name=name, date__range=(earlier, now))
+        newses = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
         data = AllNewsSerializer(newses, many=True).data
         return Response(data)
 

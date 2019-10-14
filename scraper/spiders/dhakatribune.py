@@ -25,10 +25,9 @@ class DhakaTribuneSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.listing-page-news div div div a ::attr("href")').extract():
-            if news_url == '/articles/bangladesh':
+            if news_url == '/articles/bangladesh' or news_url == '/articles/politics' or news_url == '/articles/features' or news_url == '/articles/tech' or news_url == '/articles/entertainment' or news_url == '/articles/sports' or news_url == '/articles/opinion' or news_url == '/articles/international' or news_url == '/articles/economy':
                 pass
             else:
-                # print(news_url)
                 yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -57,7 +56,7 @@ class DhakaTribuneSpider(scrapy.Spider):
         if 'bangladesh' in response.request.url:
             self.category = 'bangladesh'
         if 'politics' in response.request.url:
-            self.category = 'bangladesh'
+            self.category = 'politics'
         if 'international' in response.request.url:
             self.category = 'international'
         if 'economy' in response.request.url:
@@ -73,26 +72,5 @@ class DhakaTribuneSpider(scrapy.Spider):
 
         item['category'] = Category.objects.get(name=self.category)
 
-
-
         yield item
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# , meta = {'category': self.category}
-# item['category'] = response.meta.get('category')

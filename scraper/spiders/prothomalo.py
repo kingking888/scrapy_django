@@ -26,7 +26,6 @@ class ProthomaloSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('.has_image a ::attr("href")').extract():
-
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):

@@ -23,7 +23,6 @@ class NTVBDSpider(scrapy.Spider):
 
     def parse(self, response):
         for news_url in response.css('#cat_parent_content_list a ::attr("href")').extract():
-            print(news_url)
             yield response.follow(news_url, callback=self.parse_news)
 
 

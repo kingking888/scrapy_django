@@ -203,6 +203,8 @@ fabric.properties
 # SonarQube Plugin
 .idea/**/sonarIssues.xml
 
+config/
+
 # Markdown Navigator plugin
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/

@@ -3,6 +3,8 @@ import scrapy
 from scraper.items import AllNewsItem
 from all_news.models import Category, News
 
+import time
+
 
 class ProthomaloSpider(scrapy.Spider):
     category = ''
@@ -24,9 +26,34 @@ class ProthomaloSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
+    news_db_urls = News.objects.filter(source='Prothom Alo').values_list('url', flat=True)
+
+
+    news_db_urls = list(news_db_urls)
+
+
+
+
+    # for i in news_db_urls:
+    #     print('urlsssssssssss: ', i)
+
     def parse(self, response):
-        for news_url in response.css('.has_image a ::attr("href")').extract():
-            yield response.follow(news_url, callback=self.parse_news)
+        # crawled_urls = response.css('.has_image a ::attr("href")').extract()
+        # news_urls = ['https://www.prothomalo.com' + x for x in crawled_urls]
+
+        # unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        # print(len(self.news_db_urls))
+        # print(len(crawled_urls))
+        # print(len(news_urls))
+        # print(len(unique_urls))
+
+        # time.sleep(2)
+
+        # for news_url in unique_urls:
+        for news_url in list(set(['https://www.prothomalo.com' + x for x in response.css('.has_image a ::attr("href")').extract()]) - set(self.news_db_urls)):
+            print("..................................",news_url)
+            # yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
 

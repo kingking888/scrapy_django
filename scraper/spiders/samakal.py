@@ -49,6 +49,7 @@ class SamakalSpider(scrapy.Spider):
         item['url'] = response.request.url
         item['source'] = 'Samakal'
 
+
         if 'sports' in response.request.url:
             self.category = 'sports'
         if 'bangladesh' in response.request.url:
@@ -69,7 +70,6 @@ class SamakalSpider(scrapy.Spider):
             self.category = 'job'
         if 'comments' in response.request.url:
             self.category = 'opinion'
-
 
         item['category'] = Category.objects.get(name=self.category)
 

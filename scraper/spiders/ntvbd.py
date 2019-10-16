@@ -21,9 +21,25 @@ class NTVBDSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
+    try:
+        news_db_urls = News.objects.filter(source='NtvBD').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+        news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+    except Exception as e:
+        news_db_urls = []
+
     def parse(self, response):
-        for news_url in response.css('#cat_parent_content_list a ::attr("href")').extract():
-            yield response.follow(news_url, callback=self.parse_news)
+        crawled_urls = response.css('#cat_parent_content_list a ::attr("href")').extract()
+
+        news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+
+        for news_url in unique_urls:
+            if news_url == 'https://www.ntvbd.com/all-news':
+                pass
+            else:
+                yield response.follow(news_url, callback=self.parse_news)
 
 
     def parse_news(self, response):
@@ -40,7 +56,7 @@ class NTVBDSpider(scrapy.Spider):
         item['title'] = response.css('h1 ::text').extract_first()
         item['description'] = listToString(response.css('.dtl_section p ::text').extract())
         item['image'] = response.css('.dtl_img_section img::attr(src)').extract_first()
-        item['url'] = response.request.url
+        item['url'] = response.request.url + '/'
         item['source'] = 'NtvBD'
 
         if 'sports' in response.request.url:

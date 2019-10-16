@@ -5,7 +5,6 @@ from all_news.models import Category, News
 
 
 class ProthomaloSpider(scrapy.Spider):
-    i = 0
     category = ''
     name = 'prothomalo'
     allowed_domains = ['prothomalo.com']
@@ -25,8 +24,11 @@ class ProthomaloSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    news_db_urls = News.objects.filter(source='Prothom Alo').values_list('url', flat=True)
-    news_db_urls = list(news_db_urls)
+    try:
+        news_db_urls = News.objects.filter(source='Prothom Alo').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+    except Exception as e:
+        news_db_urls = []
 
     def parse(self, response):
         crawled_urls = response.css('.has_image a ::attr("href")').extract()
@@ -36,14 +38,10 @@ class ProthomaloSpider(scrapy.Spider):
 
         unique_urls = list(set(news_urls) - set(self.news_db_urls))
 
-        print(unique_urls)
-
         for news_url in unique_urls:
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
-        self.i = self.i + 1
-        print(self.i)
 
         def listToString(s):
             # initialize an empty string
@@ -84,23 +82,3 @@ class ProthomaloSpider(scrapy.Spider):
         item['category'] = Category.objects.get(name=self.category)
 
         yield item
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# , meta = {'category': self.category}
-# item['category'] = response.meta.get('category')

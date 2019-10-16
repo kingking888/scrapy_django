@@ -22,10 +22,12 @@ class IttefaqSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    news_db_urls = News.objects.filter(source='Ittefaq').values_list('url', flat=True)
-
-    news_db_urls = list(news_db_urls)
-    news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+    try:
+        news_db_urls = News.objects.filter(source='Ittefaq').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+        news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+    except Exception as e:
+        news_db_urls = []
 
     def parse(self, response):
 

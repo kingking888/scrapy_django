@@ -10,15 +10,15 @@ class DhakaTribuneSpider(scrapy.Spider):
     allowed_domains = ['bangla.dhakatribune.com']
 
     start_urls = [
-            'https://bangla.dhakatribune.com/articles/bangladesh/page/1',
-            'https://bangla.dhakatribune.com/articles/politics/page/1',
-            'https://bangla.dhakatribune.com/articles/international/page/1',
-            'https://bangla.dhakatribune.com/articles/economy/page/1',
-            'https://bangla.dhakatribune.com/articles/sports/page/1',
-            'https://bangla.dhakatribune.com/articles/entertainment/page/1',
-            'https://bangla.dhakatribune.com/articles/tech/page/1',
-            'https://bangla.dhakatribune.com/articles/features/page/1',
-            'https://bangla.dhakatribune.com/articles/opinion/page/1'
+            'https://bangla.dhakatribune.com/articles/bangladesh',
+            'https://bangla.dhakatribune.com/articles/politics',
+            'https://bangla.dhakatribune.com/articles/international',
+            'https://bangla.dhakatribune.com/articles/economy',
+            'https://bangla.dhakatribune.com/articles/sports',
+            'https://bangla.dhakatribune.com/articles/entertainment',
+            'https://bangla.dhakatribune.com/articles/tech',
+            'https://bangla.dhakatribune.com/articles/features',
+            'https://bangla.dhakatribune.com/articles/opinion'
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"

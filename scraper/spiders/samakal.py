@@ -19,14 +19,26 @@ class SamakalSpider(scrapy.Spider):
             'https://samakal.com/lifestyle',
             'https://samakal.com/chakri',
             'https://samakal.com/technology',
-            'https://samakal.com/comments'
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
+    try:
+        news_db_urls = News.objects.filter(source='Samakal').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+        news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+    except Exception as e:
+        news_db_urls = []
+
     def parse(self, response):
-        for news_url in response.css('.main-div a ::attr("href")').extract():
-            if '?page=2' in news_url:
+
+        crawled_urls = response.css('.main-div a ::attr("href")').extract()
+
+        news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        for news_url in unique_urls:
+            if '?page=2' in news_url or news_url == 'https://samakal.com':
                 pass
             else:
                 # print(news_url)
@@ -46,7 +58,7 @@ class SamakalSpider(scrapy.Spider):
         item['title'] = response.css('.detail-headline ::text').extract_first()
         item['description'] = listToString(response.css('.description p ::text').extract())
         item['image'] = response.css('.image-container img::attr(src)').extract_first()
-        item['url'] = response.request.url
+        item['url'] = response.request.url + '/'
         item['source'] = 'Samakal'
 
 
@@ -68,8 +80,6 @@ class SamakalSpider(scrapy.Spider):
             self.category = 'lifestyle'
         if 'chakri' in response.request.url:
             self.category = 'job'
-        if 'comments' in response.request.url:
-            self.category = 'opinion'
 
         item['category'] = Category.objects.get(name=self.category)
 

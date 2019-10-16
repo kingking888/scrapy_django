@@ -3,8 +3,6 @@ import scrapy
 from scraper.items import AllNewsItem
 from all_news.models import Category, News
 
-import time
-
 
 class ProthomaloSpider(scrapy.Spider):
     i = 0

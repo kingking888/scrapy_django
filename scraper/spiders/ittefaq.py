@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scraper.items import AllNewsItem
-from all_news.models import Category
+from all_news.models import Category, News
 
 
 class IttefaqSpider(scrapy.Spider):
@@ -22,10 +22,20 @@ class IttefaqSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    def parse(self, response):
-        for news_url in response.css('.all_news_content_block a::attr("href")').extract():
-            yield response.follow(news_url, callback=self.parse_news)
+    news_db_urls = News.objects.filter(source='Ittefaq').values_list('url', flat=True)
 
+    news_db_urls = list(news_db_urls)
+    news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+
+    def parse(self, response):
+
+        crawled_urls = response.css('.all_news_content_block a::attr("href")').extract()
+
+        news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        for news_url in unique_urls:
+            yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
 
@@ -43,7 +53,7 @@ class IttefaqSpider(scrapy.Spider):
             description = listToString(response.css('.dtl_content_block p::text').extract())
         item['description'] = description
         item['image'] = 'https://' + self.allowed_domains[0] + response.css('.dtl_img_block img::attr(src)').extract_first()
-        item['url'] = response.request.url
+        item['url'] = response.request.url+'/'
         item['source'] = 'Ittefaq'
 
         if 'sports' in response.request.url:

@@ -17,7 +17,7 @@ class Category(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    image = models.TextField()
+    image = models.TextField(null=True, blank=True)
     url = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, related_name='newses', blank=True, null=True, on_delete=models.CASCADE)
     source = models.CharField(max_length=200, null=True, blank=True)

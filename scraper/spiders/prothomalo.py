@@ -3,8 +3,11 @@ import scrapy
 from scraper.items import AllNewsItem
 from all_news.models import Category, News
 
+import time
+
 
 class ProthomaloSpider(scrapy.Spider):
+    i = 0
     category = ''
     name = 'prothomalo'
     allowed_domains = ['prothomalo.com']
@@ -25,25 +28,24 @@ class ProthomaloSpider(scrapy.Spider):
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
     news_db_urls = News.objects.filter(source='Prothom Alo').values_list('url', flat=True)
-
-
     news_db_urls = list(news_db_urls)
-
-
-
-
-    # for i in news_db_urls:
-    #     print('urlsssssssssss: ', i)
 
     def parse(self, response):
         crawled_urls = response.css('.has_image a ::attr("href")').extract()
-        news_urls = ['' + x for x in crawled_urls]
 
-        for news_url in self.crawled_urls:
-            print("..................................",news_url)
+        news_urls = ['https://www.prothomalo.com' + x for x in crawled_urls]
+        news_urls = [y.replace('#comments', '') if '#comments' in y else y for y in news_urls]
+
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        print(unique_urls)
+
+        for news_url in unique_urls:
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
+        self.i = self.i + 1
+        print(self.i)
 
         def listToString(s):
             # initialize an empty string

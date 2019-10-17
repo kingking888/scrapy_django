@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404
 
 
 from rest_framework.views import APIView
-# from rest_framework.decorators import permission_classes
-from rest_framework import permissions
+from rest_framework import permissions, generics
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
 
 import datetime
 import random
@@ -15,7 +15,7 @@ from all_news.models import Category as AllNewsCategory
 from .serializers import AllNewsSerializer
 from .serializers import AllNewsCategorySerializer
 
-hours = 1
+hours = 24
 latest_hours = 1
 
 
@@ -42,28 +42,45 @@ class RecentApiView(APIView):
             return Response(data)
 
 
-class NewsApiView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+class NewsApiView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request):
+    now = datetime.datetime.now()
+    earlier = now - datetime.timedelta(hours=hours)
+
+    queryset = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
+    serializer_class = AllNewsSerializer
+    pagination_class = PageNumberPagination
+
+    def get(self, request, *args, **kwargs):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)
 
-        newses = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
-        data = AllNewsSerializer(newses, many=True).data
-        return Response(data)
+        queryset = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
+        serializer = AllNewsSerializer(queryset, many=True)
+        page = self.paginate_queryset(serializer.data)
+        return self.get_paginated_response(page)
 
 
-class NewsCategoryApiView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+class NewsCategoryApiView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AllNewsSerializer
+    pagination_class = PageNumberPagination
 
-    def get(self, request, name):
+    def get_queryset(self, *args, **kwargs):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)
 
-        newses = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
-        data = AllNewsSerializer(newses, many=True).data
-        return Response(data)
+        name = self.kwargs['name']
+        queryset = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
+
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = AllNewsSerializer(queryset, many=True)
+        page = self.paginate_queryset(serializer.data)
+        return self.get_paginated_response(page)
 
 
 class DetailNewsApiView(APIView):
@@ -78,12 +95,26 @@ class DetailNewsApiView(APIView):
         return Response(data)
 
 
-class AllCategoryApiView(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
+class AllCategoryApiView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request):
-        categories = AllNewsCategory.objects.all()
-        data = AllNewsCategorySerializer(categories, many=True).data
-        return Response(data)
+    queryset = AllNewsCategory.objects.all()
+    serializer_class = AllNewsCategorySerializer
+    pagination_class = PageNumberPagination
+
+    def get(self, request, *args, **kwargs):
+        queryset = AllNewsCategory.objects.all()
+        serializer = AllNewsCategorySerializer(queryset, many=True)
+        page = self.paginate_queryset(serializer.data)
+        return self.get_paginated_response(page)
+
+
+# class AllCategoryApiView(APIView):
+#     permission_classes = (permissions.IsAuthenticated,)
+#
+#     def get(self, request):
+#         categories = AllNewsCategory.objects.all()
+#         data = AllNewsCategorySerializer(categories, many=True).data
+#         return Response(data)
 
 

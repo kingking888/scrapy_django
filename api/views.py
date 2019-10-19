@@ -53,7 +53,7 @@ class NewsApiView(generics.ListAPIView):
     serializer_class = AllNewsSerializer
 
     filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'url', '=source']
+    search_fields = ['title', 'description', '=source']
 
     pagination_class = PageNumberPagination
 
@@ -73,7 +73,7 @@ class NewsCategoryApiView(generics.ListAPIView):
     serializer_class = AllNewsSerializer
 
     filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'url', '=source']
+    search_fields = ['title', 'description', '=source']
 
     pagination_class = PageNumberPagination
 

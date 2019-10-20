@@ -59,7 +59,7 @@ class SamakalSpider(scrapy.Spider):
         item['description'] = listToString(response.css('.description p ::text').extract())
         item['image'] = response.css('.image-container img::attr(src)').extract_first()
         item['url'] = response.request.url + '/'
-        item['source'] = 'Samakal'
+        item['source'] = 'samakal'
 
 
         if 'sports' in response.request.url:

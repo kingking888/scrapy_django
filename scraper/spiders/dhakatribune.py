@@ -49,7 +49,7 @@ class DhakaTribuneSpider(scrapy.Spider):
         item['description'] = desc
         item['image'] = response.css('.reports-big-img img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'Dhaka Tribune'
+        item['source'] = 'dhaka_tribune'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

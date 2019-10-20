@@ -53,7 +53,7 @@ class KalerkanthoSpider(scrapy.Spider):
         item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'Kaler Kantho'
+        item['source'] = 'kaler_kantho'
 
         if 'sport' in response.request.url:
             self.category = 'sports'

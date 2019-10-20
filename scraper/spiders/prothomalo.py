@@ -56,7 +56,7 @@ class ProthomaloSpider(scrapy.Spider):
         item['description'] = listToString(response.css('div[itemprop=articleBody] p ::text').extract())
         item['image'] = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'Prothom Alo'
+        item['source'] = 'prothom_alo'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

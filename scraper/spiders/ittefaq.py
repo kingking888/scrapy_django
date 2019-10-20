@@ -56,7 +56,7 @@ class IttefaqSpider(scrapy.Spider):
         item['description'] = description
         item['image'] = 'https://' + self.allowed_domains[0] + response.css('.dtl_img_block img::attr(src)').extract_first()
         item['url'] = response.request.url+'/'
-        item['source'] = 'Ittefaq'
+        item['source'] = 'ittefaq'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

@@ -65,7 +65,7 @@ class JugantorSpider(scrapy.Spider):
         except Exception as e:
             item['image'] = ''
         item['url'] = response.request.url + '/'
-        item['source'] = 'Jugantor'
+        item['source'] = 'jugantor'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

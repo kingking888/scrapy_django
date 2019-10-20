@@ -54,7 +54,7 @@ class JagoNews24Spider(scrapy.Spider):
         item['description'] = listToString(response.css('.content-details p ::text').extract())
         item['image'] = response.xpath("//meta[@name='twitter:image']/@content")[0].extract()
         item['url'] = response.request.url
-        item['source'] = 'JagoNews24'
+        item['source'] = 'jago_news24'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

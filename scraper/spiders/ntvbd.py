@@ -57,7 +57,7 @@ class NTVBDSpider(scrapy.Spider):
         item['description'] = listToString(response.css('.dtl_section p ::text').extract())
         item['image'] = response.css('.dtl_img_section img::attr(src)').extract_first()
         item['url'] = response.request.url + '/'
-        item['source'] = 'NtvBD'
+        item['source'] = 'ntv_bd'
 
         if 'sports' in response.request.url:
             self.category = 'sports'

@@ -41,7 +41,7 @@ class RecentApiView(generics.ListAPIView):
 
         queryset = AllNews.objects.filter(category__name='opinion', date__range=(earlier, now))
         for name in names:
-            queryset = queryset.union(AllNews.objects.filter(category__name=name, date__range=(earlier, now)))
+            queryset = queryset | AllNews.objects.filter(category__name=name, date__range=(earlier, now))
 
         return queryset
 

@@ -17,7 +17,7 @@ from .serializers import AllNewsSerializer
 from .serializers import AllNewsCategorySerializer
 
 hours = 24
-latest_hours = 1
+latest_hours = 3
 
 
 # class RecentApiView(APIView):

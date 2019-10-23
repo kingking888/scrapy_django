@@ -17,7 +17,7 @@ from all_news.models import Category as AllNewsCategory
 from .serializers import AllNewsSerializerListView, AllNewsCategorySerializer, AllNewsSerializer
 
 hours = 24
-latest_hours = 3
+latest_hours = 2
 
 
 
@@ -34,33 +34,32 @@ class RecentApiView(generics.ListAPIView):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=latest_hours)
 
-        name = self.kwargs['name']
-        queryset = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
+        # name = self.kwargs['name']
+
+        names = ['politics', 'job', 'lifestyle', 'pachmishali', 'international', 'technology',
+                 'entertainment', 'economy', 'bangladesh', 'sports']
+
+        queryset = AllNews.objects.filter(category__name='opinion', date__range=(earlier, now))
+        for name in names:
+            queryset = queryset.union(AllNews.objects.filter(category__name=name, date__range=(earlier, now)))
 
         return queryset
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
         qs = self.filter_queryset(queryset)
         rand_item_count = len(qs)
-        if rand_item_count >= 3:
-            rand_values = random.sample(range(rand_item_count), 3)
-        elif rand_item_count >= 2:
-            rand_values = random.sample(range(rand_item_count), 2)
-        elif rand_item_count >= 1:
-            rand_values = random.sample(range(rand_item_count), 1)
+        if rand_item_count >= 25:
+            rand_values = random.sample(range(rand_item_count), 25)
+        elif rand_item_count < 25 and rand_item_count > 0:
+            rand_values = random.sample(range(rand_item_count), rand_item_count)
         else:
             rand_values = []
         rand_items = []
-        if len(rand_values) == 3:
-            rand_items.append(qs[rand_values[0]])
-            rand_items.append(qs[rand_values[1]])
-            rand_items.append(qs[rand_values[2]])
-        if len(rand_values) == 2:
-            rand_items.append(qs[rand_values[0]])
-            rand_items.append(qs[rand_values[1]])
-        if len(rand_values) == 1:
-            rand_items.append(qs[rand_values[0]])
+        if rand_values:
+            for value in rand_values:
+                rand_items.append(qs[value])
 
         serializer = AllNewsSerializerListView(rand_items, many=True)
         page = self.paginate_queryset(serializer.data)

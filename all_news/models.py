@@ -26,5 +26,9 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = "Newses"
 
+    @property
+    def short_description(self):
+        return self.description[:150]
+
     def __str__(self):
         return self.title

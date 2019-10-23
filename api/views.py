@@ -13,8 +13,8 @@ import random
 from all_news.models import News as AllNews
 from all_news.models import Category as AllNewsCategory
 
-from .serializers import AllNewsSerializer
-from .serializers import AllNewsCategorySerializer
+
+from .serializers import AllNewsSerializerListView, AllNewsCategorySerializer, AllNewsSerializer
 
 hours = 24
 latest_hours = 3
@@ -23,7 +23,7 @@ latest_hours = 3
 
 class RecentApiView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = AllNewsSerializer
+    serializer_class = AllNewsSerializerListView
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'description', '=source']
@@ -62,7 +62,7 @@ class RecentApiView(generics.ListAPIView):
         if len(rand_values) == 1:
             rand_items.append(qs[rand_values[0]])
 
-        serializer = AllNewsSerializer(rand_items, many=True)
+        serializer = AllNewsSerializerListView(rand_items, many=True)
         page = self.paginate_queryset(serializer.data)
         return self.get_paginated_response(page)
 
@@ -74,7 +74,7 @@ class NewsApiView(generics.ListAPIView):
     earlier = now - datetime.timedelta(hours=hours)
 
     queryset = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
-    serializer_class = AllNewsSerializer
+    serializer_class = AllNewsSerializerListView
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'description', '=source']
@@ -87,14 +87,14 @@ class NewsApiView(generics.ListAPIView):
 
         queryset = AllNews.objects.filter(date__range=(earlier, now)).order_by('-pk')
         qs = self.filter_queryset(queryset)
-        serializer = AllNewsSerializer(qs, many=True)
+        serializer = AllNewsSerializerListView(qs, many=True)
         page = self.paginate_queryset(serializer.data)
         return self.get_paginated_response(page)
 
 
 class NewsCategoryApiView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = AllNewsSerializer
+    serializer_class = AllNewsSerializerListView
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'description', '=source']
@@ -113,7 +113,7 @@ class NewsCategoryApiView(generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         qs = self.filter_queryset(queryset)
-        serializer = AllNewsSerializer(qs, many=True)
+        serializer = AllNewsSerializerListView(qs, many=True)
         page = self.paginate_queryset(serializer.data)
         return self.get_paginated_response(page)
 

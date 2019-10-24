@@ -56,7 +56,9 @@ class SamakalSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('.detail-headline ::text').extract_first()
-        item['description'] = listToString(response.css('.description p ::text').extract())
+        desc = listToString(response.css('.description p ::text').extract())
+        if desc:
+            item['description'] = str(desc).strip()
         item['image'] = response.css('.image-container img::attr(src)').extract_first()
         item['url'] = response.request.url + '/'
         item['source'] = 'samakal'

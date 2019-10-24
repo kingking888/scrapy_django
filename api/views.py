@@ -39,9 +39,9 @@ class RecentApiView(generics.ListAPIView):
         names = ['politics', 'job', 'lifestyle', 'pachmishali', 'international', 'technology',
                  'entertainment', 'economy', 'bangladesh', 'sports']
 
-        queryset = AllNews.objects.filter(category__name='opinion', date__range=(earlier, now))
+        queryset = AllNews.objects.filter(category__name='opinion', date__range=(earlier, now)).order_by('-pk')
         for name in names:
-            queryset = queryset | AllNews.objects.filter(category__name=name, date__range=(earlier, now))
+            queryset = queryset | AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
 
         return queryset
 
@@ -52,12 +52,13 @@ class RecentApiView(generics.ListAPIView):
         rand_item_count = len(qs)
         if rand_item_count >= 25:
             rand_values = random.sample(range(rand_item_count), 25)
-        elif rand_item_count < 25 and rand_item_count > 0:
+        elif 25 > rand_item_count > 0:
             rand_values = random.sample(range(rand_item_count), rand_item_count)
         else:
             rand_values = []
         rand_items = []
         if rand_values:
+            rand_values.sort()
             for value in rand_values:
                 rand_items.append(qs[value])
 

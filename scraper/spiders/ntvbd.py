@@ -54,7 +54,9 @@ class NTVBDSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('h1 ::text').extract_first()
-        item['description'] = listToString(response.css('.dtl_section p ::text').extract())
+        description = response.css('.dtl_section p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        item['description'] = listToString(description)
         item['image'] = response.css('.dtl_img_section img::attr(src)').extract_first()
         item['url'] = response.request.url + '/'
         item['source'] = 'ntv_bd'

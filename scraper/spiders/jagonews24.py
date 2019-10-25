@@ -53,7 +53,9 @@ class JagoNews24Spider(scrapy.Spider):
         title = response.css('h1 ::text').extract_first()
         if title:
             item['title'] = str(title).strip()
-        item['description'] = listToString(response.css('.content-details p ::text').extract())
+        description = response.css('.content-details p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        item['description'] = listToString(description)
         item['image'] = response.xpath("//meta[@name='twitter:image']/@content")[0].extract()
         item['url'] = response.request.url
         item['source'] = 'jago_news24'

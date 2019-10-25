@@ -52,7 +52,9 @@ class KalerkanthoSpider(scrapy.Spider):
         title = response.css('h2::text').extract_first()
         if title:
             item['title'] = str(title).strip()
-        item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
+        description = response.css('.some-class-name2 p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        item['description'] = listToString(description)
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url
         item['source'] = 'kaler_kantho'

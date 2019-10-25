@@ -59,7 +59,9 @@ class JugantorSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('.headline_section ::text').extract_first()
-        item['description'] = listToString(response.css('#myText p ::text').extract())
+        description = response.css('#myText p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        item['description'] = listToString(description)
         try:
             item['image'] = 'https://www.jugantor.com' + response.css('.dtl_img_section img::attr(src)').extract_first()
         except Exception as e:

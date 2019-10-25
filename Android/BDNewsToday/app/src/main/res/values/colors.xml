@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryDark">#616161</color>
+    <color name="colorAccent">#1565c0</color>
+
+
+
+    <!-- Ripple background -->
+    <color name="colorRippleBackground">#616161</color>
+
+
+    <!--Radio button background -->
+    <color name="colorRadioOnBackground">#1565c0</color>
+    <color name="colorRadioOffBackground">#B31565C0</color>
+
+    <!--window background color-->
+    <color name="backgroundWindow">#000</color>
+
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BDNewsToday</string>
+
+    <!--label for bottom navigation -->
+    <string name="label_bottom_navigation_highlights">Highlights</string>
+    <string name="label_bottom_navigation_news">News</string>
+    <string name="label_bottom_navigation_more">More</string>
+
+
+    <string name="label_no_data">No Data Available</string>
+    <string name="label_tv_more_saved_news">Saved News</string>
+    <string name="label_tv_more_info">About</string>
+    <string name="label_tv_theme">Dark Mode</string>
+    <string name="label_tv_terms_about_header">About Us</string>
+
+    <string name="title_activity_highlight">HighlightActivity</string>
+    <string name="title_activity_more">MoreActivity</string>
+
+    <!-- content description -->
+    <string name="content_description_info">Icon denotes info</string>
+    <string name="content_description_saved_news">Icon denotes saved news </string>
+    <string name="content_description_theme">Icon denotes switching theme</string>
+
+    <!--about pop up dialog Content Description-->
+    <string name="content_description_cross">Icon denotes close the dialog </string>
+
+</resources>

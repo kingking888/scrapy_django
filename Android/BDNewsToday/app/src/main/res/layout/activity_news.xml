@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.main.NewsActivity">
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/search_view_background"
+        android:iconifiedByDefault="false"
+        android:queryBackground="@android:color/transparent"
+        android:queryHint="Search latest news"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/main_sv_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <LinearLayout
+            android:id="@+id/main_ll_category"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_cl_category"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:id="@+id/main_rg_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_category_bd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:gravity="center"
+                        android:padding="@dimen/option_padding"
+                        android:text="বাংলাদেশ"
+                        android:tag="bangladesh"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_politics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:gravity="center"
+                        android:padding="@dimen/option_padding"
+                        android:text="রাজনীতি"
+                        android:tag="politics"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_bd"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_int"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="আন্তর্জাতিক"
+                        android:tag="international"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_politics"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_sports"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="খেলাধুলা"
+                        android:tag="sports"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_int"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_economics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="অর্থনীতি"
+                        android:tag="economy"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_sports"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_entertainment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="বিনোদন"
+                        android:tag="entertainment"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_economics"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_techno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="তথ্যপ্রযুক্তি"
+                        android:tag="technology"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_entertainment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_lifestyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="জীবনযাপন"
+                        android:tag="lifestyle"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_techno"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_mix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="পাঁচমিশালি"
+                        android:tag="pachmishali"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_lifestyle"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_opinion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="মতামত"
+                        android:tag="opinion"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_mix"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_category_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/rb_margin"
+                        android:layout_marginEnd="@dimen/rb_margin"
+                        android:background="@drawable/radio_states"
+                        android:button="@null"
+                        android:foreground="@drawable/ripple_button_circle"
+                        android:padding="@dimen/option_padding"
+                        android:text="চাকরি"
+                        android:tag="job"
+                        android:textColor="@drawable/radio_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/rb_category_opinion"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/include5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_sv_category" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_sv_category" />
+
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="@string/label_no_data"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/news_recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/news_recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/news_recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/news_recyclerView" />
+
+
+
+    <include
+        android:id="@+id/include5"
+        layout="@layout/bottom_navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

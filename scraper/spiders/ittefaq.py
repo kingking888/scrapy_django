@@ -57,6 +57,8 @@ class IttefaqSpider(scrapy.Spider):
             description = response.css('.dtl_content_block p::text').extract()
             description = [x.strip() + '\n\n' for x in description]
             description = listToString(description)
+        if 'আরও পড়ুন:' in description:
+            description = description.replace('আরও পড়ুন:', '')
         item['description'] = description
         item['image'] = 'https://' + self.allowed_domains[0] + response.css('.dtl_img_block img::attr(src)').extract_first()
         item['url'] = response.request.url+'/'

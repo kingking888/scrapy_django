@@ -42,11 +42,13 @@ class DhakaTribuneSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('h1::text').extract_first()
-        desc = listToString(response.css('.report-content p ::text').extract())
+        description = response.css('.report-content p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        description = listToString(description)
         highlighted = response.css('.highlighted-content ::text').extract_first()
         if highlighted:
-            desc = desc.replace(highlighted, highlighted+'। ')
-        item['description'] = desc
+            description = description.replace(highlighted, highlighted+'। ')
+        item['description'] = description
         item['image'] = response.css('.reports-big-img img::attr(src)').extract_first()
         item['url'] = response.request.url
         item['source'] = 'dhaka_tribune'

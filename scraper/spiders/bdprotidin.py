@@ -51,7 +51,7 @@ class BdprotidinSpider(scrapy.Spider):
 
         item['title'] = response.css('.post-title ::text').extract_first()
         item['description'] = remove_tags(response.xpath("//article").extract_first()).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1551006634778-0'); });", "").strip()
-        item['image'] = 'https://' + self.allowed_domains[0] + '/' + response.css('.main-image img::attr(src)').extract_first()
+        item['image'] = 'https://www.' + self.allowed_domains[0] + '/' + response.css('.main-image img::attr(src)').extract_first()
         item['url'] = response.request.url
         item['source'] = 'bd_protidin'
 

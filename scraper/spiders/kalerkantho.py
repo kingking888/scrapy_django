@@ -49,7 +49,9 @@ class KalerkanthoSpider(scrapy.Spider):
             return (str1.join(s))
 
         item = AllNewsItem()
-        item['title'] = response.css('h2::text').extract_first()
+        title = response.css('h2::text').extract_first()
+        if title:
+            item['title'] = str(title).strip()
         item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url

@@ -45,7 +45,7 @@ class DhakaTribuneSpider(scrapy.Spider):
         desc = listToString(response.css('.report-content p ::text').extract())
         highlighted = response.css('.highlighted-content ::text').extract_first()
         if highlighted:
-            desc = desc.replace(highlighted, highlighted+'। &npsp;')
+            desc = desc.replace(highlighted, highlighted+'। /n')
         item['description'] = desc
         item['image'] = response.css('.reports-big-img img::attr(src)').extract_first()
         item['url'] = response.request.url

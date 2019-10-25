@@ -56,7 +56,10 @@ class ProthomaloSpider(scrapy.Spider):
         description = response.css('div[itemprop=articleBody] p ::text').extract()
         description = [x.strip()+'\n\n' for x in description]
         item['description'] = listToString(description)
-        item['image'] = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
+        image = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
+        if not image:
+            image = response.css('.featured_image img::attr(src)').extract_first()
+        item['image'] = image
         item['url'] = response.request.url
         item['source'] = 'prothom_alo'
 

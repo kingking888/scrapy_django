@@ -4,42 +4,31 @@ from scraper.items import AllNewsItem
 from all_news.models import Category, News
 
 
-class ProthomaloSpider(scrapy.Spider):
+class DhakaTribuneSpider(scrapy.Spider):
     category = ''
-    name = 'prothomalo'
-    allowed_domains = ['prothomalo.com']
+    name = 'dhakatribune'
+    allowed_domains = ['bangla.dhakatribune.com']
 
     start_urls = [
-            'https://www.prothomalo.com/sports/article?page=1',
-            'https://www.prothomalo.com/bangladesh/article?page=1',
-            'https://www.prothomalo.com/international/article?page=1',
-            'https://www.prothomalo.com/economy/article?page=1',
-            'https://www.prothomalo.com/entertainment/article?page=1',
-            'https://www.prothomalo.com/topic/%E0%A6%9A%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A6%BE%E0%A6%95%E0%A6%B0%E0%A6%BF?page=1',
-            'https://www.prothomalo.com/technology/article?page=1',
-            'https://www.prothomalo.com/life-style/article?page=1',
-            'https://www.prothomalo.com/pachmisheli/article?page=1',
-            'https://www.prothomalo.com/opinion/article?page=1',
+            'https://bangla.dhakatribune.com/articles/bangladesh',
+            'https://bangla.dhakatribune.com/articles/politics',
+            'https://bangla.dhakatribune.com/articles/international',
+            'https://bangla.dhakatribune.com/articles/economy',
+            'https://bangla.dhakatribune.com/articles/sports',
+            'https://bangla.dhakatribune.com/articles/entertainment',
+            'https://bangla.dhakatribune.com/articles/tech',
+            'https://bangla.dhakatribune.com/articles/features',
+            'https://bangla.dhakatribune.com/articles/opinion'
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    try:
-        news_db_urls = News.objects.filter(source='prothom_alo').values_list('url', flat=True)
-        news_db_urls = list(news_db_urls)
-    except Exception as e:
-        news_db_urls = []
-
     def parse(self, response):
-        crawled_urls = response.css('.has_image a ::attr("href")').extract()
-
-        news_urls = ['https://www.prothomalo.com' + x for x in crawled_urls]
-        news_urls = [y.replace('#comments', '') if '#comments' in y else y for y in news_urls]
-
-        unique_urls = list(set(news_urls) - set(self.news_db_urls))
-
-        for news_url in unique_urls:
-            yield response.follow(news_url, callback=self.parse_news)
+        for news_url in response.css('.listing-page-news div div div a ::attr("href")').extract():
+            if news_url == '/articles/bangladesh' or news_url == '/articles/politics' or news_url == '/articles/features' or news_url == '/articles/tech' or news_url == '/articles/entertainment' or news_url == '/articles/sports' or news_url == '/articles/opinion' or news_url == '/articles/international' or news_url == '/articles/economy':
+                pass
+            else:
+                yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
 
@@ -52,35 +41,36 @@ class ProthomaloSpider(scrapy.Spider):
 
         item = AllNewsItem()
 
-        item['title'] = response.css('.mb10 ::text').extract_first()
-        description = response.css('div[itemprop=articleBody] p ::text').extract()
-        description = [x.strip()+'\n\n' for x in description]
-        item['description'] = listToString(description)
-        item['image'] = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
+        item['title'] = response.css('h1::text').extract_first()
+        desc = listToString(response.css('.report-content p ::text').extract())
+        highlighted = response.css('.highlighted-content ::text').extract_first()
+        if highlighted:
+            desc = desc.replace(highlighted, highlighted+'। ')
+        item['description'] = desc
+        item['image'] = response.css('.reports-big-img img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'prothom_alo'
+        item['source'] = 'dhaka_tribune'
 
         if 'sports' in response.request.url:
             self.category = 'sports'
         if 'bangladesh' in response.request.url:
             self.category = 'bangladesh'
+        if 'politics' in response.request.url:
+            self.category = 'politics'
         if 'international' in response.request.url:
             self.category = 'international'
         if 'economy' in response.request.url:
             self.category = 'economy'
         if 'entertainment' in response.request.url:
             self.category = 'entertainment'
-        if 'chakri-bakri' in response.request.url:
-            self.category = 'job'
-        if 'technology' in response.request.url:
+        if 'tech' in response.request.url:
             self.category = 'technology'
-        if 'life-style' in response.request.url:
-            self.category = 'lifestyle'
-        if 'pachmisheli' in response.request.url:
-            self.category = 'pachmishali'
         if 'opinion' in response.request.url:
             self.category = 'opinion'
+        if 'features' in response.request.url:
+            self.category = 'pachmishali'
 
         item['category'] = Category.objects.get(name=self.category)
 
         yield item
+

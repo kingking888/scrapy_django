@@ -30,6 +30,7 @@ class News(models.Model):
     def short_description(self):
         desc = self.description[:125]
         desc = desc.strip('\n')
+        desc = desc.strip('\t')
         desc = desc.strip()
         return desc+'...'
 

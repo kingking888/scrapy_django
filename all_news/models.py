@@ -28,7 +28,10 @@ class News(models.Model):
 
     @property
     def short_description(self):
-        return self.description[:130]
+        desc = self.description[:125]
+        desc = desc.strip('\n')
+        desc = desc.strip()
+        return desc+'...'
 
     def __str__(self):
         return self.title

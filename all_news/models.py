@@ -28,10 +28,10 @@ class News(models.Model):
 
     @property
     def short_description(self):
-        desc = self.description[:125]
+        desc = self.description[:130]
         desc = desc.replace('\n', '')
         desc = desc.replace('\t', '')
-        desc = desc.strip()
+        desc = desc.lstrip()
         return desc+'...'
 
     def __str__(self):

@@ -32,7 +32,7 @@ class News(models.Model):
         desc = desc.replace('\n', '')
         desc = desc.replace('\t', '')
         desc = desc.lstrip()
-        return desc+'...'
+        return desc
 
     def __str__(self):
         return self.title

@@ -54,7 +54,7 @@ class ProthomaloSpider(scrapy.Spider):
 
         item['title'] = response.css('.mb10 ::text').extract_first()
         description = response.css('div[itemprop=articleBody] p ::text').extract()
-        description = [x.strip()+'\n\n' if not 'প্রথম আলো' in x else x.lstrip('\n') for x in description]
+        description = [x.strip()+'\n\n' if not 'প্রথম আলো' in x else x.strip('\n') for x in description]
         item['description'] = listToString(description)
         image = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
         if not image:

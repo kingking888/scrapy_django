@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/backgroundColor"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/card_view_elevation"
         app:cardCornerRadius="6dp"
+        app:cardBackgroundColor="?attr/cardBackground"
         android:foreground="@drawable/ripple_without_mask_or_layer">
 
 
@@ -21,8 +23,9 @@
 
             <ImageView
                 android:id="@+id/iv_news"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:scaleType="centerCrop"
@@ -36,6 +39,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_news"
@@ -47,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/big_text"
                     android:textStyle="bold"
+                    android:textColor="?attr/textColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +62,9 @@
                     android:id="@+id/tv_news_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:textSize="@dimen/medium_text"
+                    android:textColor="?attr/textColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_news_title" />
@@ -63,7 +72,12 @@
                 <TextView
                     android:id="@+id/tv_news_desc"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="marquee"
+                    android:maxLength="100"
+                    android:textColor="?attr/textColor"
                     android:textSize="@dimen/normal_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

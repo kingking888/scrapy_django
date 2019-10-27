@@ -17,4 +17,7 @@
     <!--window background color-->
     <color name="backgroundWindow">#000</color>
 
+    <!-- Action bar title color -->
+    <color name="title_color">#000</color>
+
 </resources>

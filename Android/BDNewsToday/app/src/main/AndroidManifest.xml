@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.sakib.bdnewstoday">
+    package="com.softaholik.bdnewstoday">
 
     <dist:module dist:instant="true" />
 
@@ -16,20 +16,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.SavedNewsActivity"></activity>
         <activity
-            android:name=".activities.main.MoreActivity"
-            android:label="@string/title_activity_more"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".activities.main.HighlightActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activities.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.main.MoreActivity"
+            android:label="@string/title_activity_more"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.main.HighlightActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".activities.NewsSourceActivity" />
         <activity
             android:name=".activities.NewsDetailsActivity"
@@ -37,9 +43,8 @@
             android:parentActivityName=".activities.main.NewsActivity" />
         <activity
             android:name=".activities.main.NewsActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

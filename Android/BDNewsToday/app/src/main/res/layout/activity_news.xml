@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     tools:context=".activities.main.NewsActivity">
 
     <SearchView
@@ -16,10 +17,12 @@
         android:background="@drawable/search_view_background"
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
-        android:queryHint="Search latest news"
+        android:queryHint="Search Bangladesh news"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <HorizontalScrollView
         android:id="@+id/main_sv_category"
@@ -47,7 +50,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -65,8 +70,8 @@
                         android:foreground="@drawable/ripple_button_circle"
                         android:gravity="center"
                         android:padding="@dimen/option_padding"
-                        android:text="বাংলাদেশ"
                         android:tag="bangladesh"
+                        android:text="বাংলাদেশ"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +87,8 @@
                         android:foreground="@drawable/ripple_button_circle"
                         android:gravity="center"
                         android:padding="@dimen/option_padding"
-                        android:text="রাজনীতি"
                         android:tag="politics"
+                        android:text="রাজনীতি"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_bd"
@@ -98,8 +103,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="আন্তর্জাতিক"
                         android:tag="international"
+                        android:text="আন্তর্জাতিক"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_politics"
@@ -114,8 +119,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="খেলাধুলা"
                         android:tag="sports"
+                        android:text="খেলাধুলা"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_int"
@@ -130,8 +135,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="অর্থনীতি"
                         android:tag="economy"
+                        android:text="অর্থনীতি"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_sports"
@@ -146,8 +151,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="বিনোদন"
                         android:tag="entertainment"
+                        android:text="বিনোদন"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_economics"
@@ -162,8 +167,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="তথ্যপ্রযুক্তি"
                         android:tag="technology"
+                        android:text="তথ্যপ্রযুক্তি"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_entertainment"
@@ -178,8 +183,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="জীবনযাপন"
                         android:tag="lifestyle"
+                        android:text="জীবনযাপন"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_techno"
@@ -194,8 +199,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="পাঁচমিশালি"
                         android:tag="pachmishali"
+                        android:text="পাঁচমিশালি"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_lifestyle"
@@ -210,8 +215,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="মতামত"
                         android:tag="opinion"
+                        android:text="মতামত"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/rb_category_mix"
@@ -227,8 +232,8 @@
                         android:button="@null"
                         android:foreground="@drawable/ripple_button_circle"
                         android:padding="@dimen/option_padding"
-                        android:text="চাকরি"
                         android:tag="job"
+                        android:text="চাকরি"
                         android:textColor="@drawable/radio_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -243,17 +248,23 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_recyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/include5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_sv_category" />
+        app:layout_constraintTop_toBottomOf="@+id/main_sv_category">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/news_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -263,27 +274,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_sv_category" />
+        app:layout_constraintTop_toBottomOf="@+id/main_sv_category"
+        app:layout_constraintVertical_bias="0.9" />
 
 
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:gravity="center"
         android:text="@string/label_no_data"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/news_recyclerView"
-        app:layout_constraintEnd_toEndOf="@+id/news_recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/news_recyclerView"
-        app:layout_constraintTop_toTopOf="@+id/news_recyclerView" />
+        app:layout_constraintBottom_toBottomOf="@+id/include5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/swipeRefreshLayout"
+        app:layout_constraintTop_toBottomOf="@+id/main_sv_category" />
 
 
 

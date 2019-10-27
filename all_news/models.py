@@ -28,7 +28,7 @@ class News(models.Model):
 
     @property
     def short_description(self):
-        desc = self.description[:150]
+        desc = self.description[:130]
         desc = desc.replace('\n', '')
         desc = desc.replace('\t', '')
         desc = desc.lstrip()

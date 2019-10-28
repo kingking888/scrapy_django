@@ -53,6 +53,8 @@ class KalerkanthoSpider(scrapy.Spider):
         if title:
             item['title'] = str(title).strip()
         description = response.css('.some-class-name2 p ::text').extract()
+        if not description:
+            description = response.css('.some-class-name2 div ::text').extract()
         description = [x.strip() + '\n\n' for x in description]
         item['description'] = listToString(description)
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()

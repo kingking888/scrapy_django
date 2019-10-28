@@ -61,8 +61,8 @@ class ProthomaloSpider(scrapy.Spider):
             image = response.css('.featured_image img::attr(src)').extract_first()
             if image:
                 image = 'https:' + image
-            # elif not image:
-            #     image = response.css('div[itemprop=articleBody] iframe::attr(src)').extract_first()
+            elif not image:
+                image = response.css('div[itemprop=articleBody] iframe::attr(src)').extract_first()
         item['image'] = image
         item['url'] = response.request.url
         item['source'] = 'prothom_alo'

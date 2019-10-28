@@ -54,9 +54,11 @@ class IttefaqSpider(scrapy.Spider):
         description = [x.strip() + '\n\n' for x in description]
         description = listToString(description)
         if not description:
-            description = response.css('.dtl_content_block p::text').extract()
-            description = [x.strip() + '\n\n' for x in description]
-            description = listToString(description)
+            description = response.css('.dtl_content_block strong::text').extract()
+            if description:
+                description = description + response.css('.dtl_content_block p::text').extract()
+                description = [x.strip() + '\n\n' for x in description]
+                description = listToString(description)
         if 'আরও পড়ুন:'in description:
             description = description.replace('আরও পড়ুন:', '')
         if 'আরও পড়ুন :'in description:

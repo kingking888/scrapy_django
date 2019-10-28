@@ -55,10 +55,8 @@ class KalerkanthoSpider(scrapy.Spider):
         description = response.css('.some-class-name2 p ::text').extract()
         if not description:
             description = response.css('.some-class-name2 div ::text').extract()
-        if "googletag.cmd.push(function() { googletag.display('div-gpt-ad-1567335777172-0'); });" in description:
-            list(description).pop("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1567335777172-0'); });")
         description = [x.strip() + '\n\n' for x in description]
-        item['description'] = listToString(description)
+        item['description'] = listToString(description).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1567335777172-0'); });", "")
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url
         item['source'] = 'kaler_kantho'

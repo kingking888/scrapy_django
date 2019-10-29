@@ -76,8 +76,11 @@ class NTVBDSpider(scrapy.Spider):
         if 'opinion' in response.request.url:
             self.category = 'opinion'
 
-
         item['category'] = Category.objects.get(name=self.category)
 
-        yield item
+        if description:
+            if not 'বিস্তারিত আসছে...':
+                yield item
+        else:
+            pass
 

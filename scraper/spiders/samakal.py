@@ -89,5 +89,9 @@ class SamakalSpider(scrapy.Spider):
 
         item['category'] = Category.objects.get(name=self.category)
 
-        yield item
+        if description:
+            if not 'বিস্তারিত আসছে...':
+                yield item
+        else:
+            pass
 

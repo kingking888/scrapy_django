@@ -91,6 +91,7 @@ class ProthomaloSpider(scrapy.Spider):
         item['category'] = Category.objects.get(name=self.category)
 
         if description:
-            yield item
+            if not 'বিস্তারিত আসছে...':
+                yield item
         else:
             pass

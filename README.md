@@ -45,5 +45,5 @@ Django REST API, Android
 
 ### Skeleton view
 ![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view.png "Skeleton View")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_dark.png "Skeleton View")
+![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_dark.png "Skeleton View Dark")
 

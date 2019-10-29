@@ -24,6 +24,7 @@ public abstract class NewsDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     NewsDatabase.class, "news_database")
                     .fallbackToDestructiveMigration()
+                    .addCallback(roomCallback)
                     .build();
         }
         return instance;
@@ -46,7 +47,9 @@ public abstract class NewsDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-           // newsDao.insert(new News("Title 1", "Description 1", 1));
+           /* newsDao.insert(new News("22331", "Description 1", "Description ","",""));
+            newsDao.insert(new News("22331", "Description 1", "Description ","",""));
+            newsDao.insert(new News("22331", "Description 1", "Description ","",""));*/
             return null;
         }
     }

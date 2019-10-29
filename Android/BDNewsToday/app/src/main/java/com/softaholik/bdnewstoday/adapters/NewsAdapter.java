@@ -6,16 +6,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.softaholik.bdnewstoday.R;
 import com.softaholik.bdnewstoday.activities.NewsDetailsActivity;
+import com.softaholik.bdnewstoday.activities.NewsSourceActivity;
+import com.softaholik.bdnewstoday.models.News;
 import com.softaholik.bdnewstoday.models.NewsList;
+import com.softaholik.bdnewstoday.models.NewsViewModel;
+import com.softaholik.bdnewstoday.models.db.NewsDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +34,9 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private List<NewsList> newsLists;
     private Context mContext;
+    private static String TAG = NewsAdapter.class.getSimpleName();
+    private OnItemClickListener listener;
+
 
     public NewsAdapter(List<NewsList> newsLists, Context mContext) {
         this.newsLists = newsLists;
@@ -44,9 +54,8 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, int position) {
-
+        final NewsDatabase newsDatabase = NewsDatabase.getInstance(mContext);
         final NewsList newsList = newsLists.get(position);
-
         holder.tvNewsTitle.setText(newsList.getTitle());
         holder.tvNewsDesc.setText(String.format("%s.......", newsList.getShort_description()));
 
@@ -89,6 +98,18 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             }
         });
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                Log.d("long", "onLongClick: pressed");
+                Toast.makeText(mContext,"News has been saved"+newsList.getNews_id(),Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        });
+
+
     }
 
     @Override
@@ -115,6 +136,14 @@ public class NewsAdapter  extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 
         }
+    }
+
+    public interface OnItemClickListener {
+        void onSaveClick(News news);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
 }

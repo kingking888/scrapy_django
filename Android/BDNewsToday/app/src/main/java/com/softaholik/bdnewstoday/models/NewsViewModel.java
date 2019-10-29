@@ -17,15 +17,15 @@ public class NewsViewModel extends AndroidViewModel {
     public NewsViewModel(@NonNull Application application) {
         super(application);
         repository = new NewsRepository(application);
-        allNews = repository.getAllNotes();
+        allNews = repository.getAllNews();
     }
 
     public void insert(News news) {
         repository.insert(news);
     }
 
-    public void delete(News note) {
-        repository.delete(note);
+    public void delete(News news) {
+        repository.delete(news);
     }
 
     public void deleteAllNews() {

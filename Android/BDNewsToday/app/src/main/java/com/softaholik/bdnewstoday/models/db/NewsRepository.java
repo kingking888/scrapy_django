@@ -32,7 +32,7 @@ public class NewsRepository {
         new DeleteAllNotesAsyncTask(newsDao).execute();
     }
 
-    public LiveData<List<News>> getAllNotes() {
+    public LiveData<List<News>> getAllNews() {
         return allNews;
     }
 

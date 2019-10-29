@@ -3,8 +3,8 @@
     android:height="24dp"
     android:viewportWidth="21.6"
     android:viewportHeight="21.6"
-    android:tint="#1565C0"
-    android:alpha="0.8">
+    android:tint="?attr/cardBackground"
+    android:alpha="0.6">
   <group android:translateX="-1.2"
       android:translateY="-1.2">
       <path

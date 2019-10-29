@@ -96,7 +96,7 @@ class IttefaqSpider(scrapy.Spider):
         item['category'] = Category.objects.get(name=self.category)
 
         if description:
-            if not 'বিস্তারিত আসছে...':
+            if 'বিস্তারিত আসছে...' not in description:
                 yield item
         else:
             pass

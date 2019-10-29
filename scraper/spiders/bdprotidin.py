@@ -50,7 +50,8 @@ class BdprotidinSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('.post-title ::text').extract_first()
-        item['description'] = remove_tags(response.xpath("//article").extract_first()).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1551006634778-0'); });", "").strip()
+        description = remove_tags(response.xpath("//article").extract_first()).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1551006634778-0'); });", "").strip()
+        item['description'] = description
         item['image'] = 'https://www.' + self.allowed_domains[0] + '/' + response.css('.main-image img::attr(src)').extract_first()
         item['url'] = response.request.url
         item['source'] = 'bd_protidin'
@@ -79,7 +80,7 @@ class BdprotidinSpider(scrapy.Spider):
         item['category'] = Category.objects.get(name=self.category)
 
         if description:
-            if not 'বিস্তারিত আসছে...':
+            if 'বিস্তারিত আসছে...' not in description:
                 yield item
         else:
             pass

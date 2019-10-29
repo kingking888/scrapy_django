@@ -41,7 +41,6 @@ CREATED_APPS = [
 DOWNLOADED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
-    # 'corsheaders',
 ]
 
 INSTALLED_APPS = [
@@ -91,12 +90,7 @@ from config.config import DATABASES
 
 DATABASES = DATABASES
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -136,13 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
-    ]
+   STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+   ]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
 MEDIA_URL = '/media/'
@@ -150,17 +143,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#     ]
-# }
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+        'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
 }

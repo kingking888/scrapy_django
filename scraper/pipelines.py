@@ -16,6 +16,9 @@ class ScraperPipeline(object):
         except IntegrityError as e:
             if 'UNIQUE constraint' in str(e.args):
                 pass
+        # except Exception as e:
+        #     print(e)
+
 
 
 

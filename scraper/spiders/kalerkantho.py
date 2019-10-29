@@ -24,9 +24,19 @@ class KalerkanthoSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    def parse(self, response):
+    try:
+        news_db_urls = News.objects.filter(source='kaler_kantho').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+    except Exception as e:
+        news_db_urls = []
 
-        for news_url in response.css('.n_row a::attr("href")').extract():
+    def parse(self, response):
+        crawled_urls = response.css('.n_row a::attr("href")').extract()
+        news_urls = [x.replace('.', 'https://www.kalerkantho.com') for x in crawled_urls]
+
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        for news_url in unique_urls:
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -39,11 +49,17 @@ class KalerkanthoSpider(scrapy.Spider):
             return (str1.join(s))
 
         item = AllNewsItem()
-        item['title'] = response.css('h2::text').extract_first()
-        item['description'] = listToString(response.css('.some-class-name2 p ::text').extract())
+        title = response.css('h2::text').extract_first()
+        if title:
+            item['title'] = str(title).strip()
+        description = response.css('.some-class-name2 p ::text').extract()
+        if not description:
+            description = response.css('.some-class-name2 div ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        item['description'] = listToString(description).replace("googletag.cmd.push(function() { googletag.display('div-gpt-ad-1567335777172-0'); });", "").lstrip()
         item['image'] = response.css('.img-popup img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'Kaler Kantho'
+        item['source'] = 'kaler_kantho'
 
         if 'sport' in response.request.url:
             self.category = 'sports'

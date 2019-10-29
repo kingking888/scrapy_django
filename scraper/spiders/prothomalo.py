@@ -24,9 +24,21 @@ class ProthomaloSpider(scrapy.Spider):
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
-    def parse(self, response):
-        for news_url in response.css('.has_image a ::attr("href")').extract():
+    try:
+        news_db_urls = News.objects.filter(source='prothom_alo').values_list('url', flat=True)
+        news_db_urls = list(news_db_urls)
+    except Exception as e:
+        news_db_urls = []
 
+    def parse(self, response):
+        crawled_urls = response.css('.has_image a ::attr("href")').extract()
+
+        news_urls = ['https://www.prothomalo.com' + x for x in crawled_urls]
+        news_urls = [y.replace('#comments', '') if '#comments' in y else y for y in news_urls]
+
+        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+
+        for news_url in unique_urls:
             yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -41,10 +53,19 @@ class ProthomaloSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('.mb10 ::text').extract_first()
-        item['description'] = listToString(response.css('div[itemprop=articleBody] p ::text').extract())
-        item['image'] = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
+        description = response.css('div[itemprop=articleBody] p ::text').extract()
+        description = [x.strip()+'\n\n' if not 'প্রথম আলো' in x else x.strip('\n') for x in description]
+        item['description'] = listToString(description)
+        image = response.css('div[itemprop=articleBody] img::attr(src)').extract_first()
+        if not image:
+            image = response.css('.featured_image img::attr(src)').extract_first()
+            if image:
+                image = 'https:' + image
+            elif not image:
+                image = response.css('div[itemprop=articleBody] iframe::attr(src)').extract_first()
+        item['image'] = image
         item['url'] = response.request.url
-        item['source'] = 'Prothom Alo'
+        item['source'] = 'prothom_alo'
 
         if 'sports' in response.request.url:
             self.category = 'sports'
@@ -69,24 +90,7 @@ class ProthomaloSpider(scrapy.Spider):
 
         item['category'] = Category.objects.get(name=self.category)
 
-        yield item
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# , meta = {'category': self.category}
-# item['category'] = response.meta.get('category')
+        if description:
+            yield item
+        else:
+            pass

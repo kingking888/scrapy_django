@@ -17,7 +17,7 @@ class Category(models.Model):
 class News(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    image = models.TextField()
+    image = models.TextField(null=True, blank=True)
     url = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, related_name='newses', blank=True, null=True, on_delete=models.CASCADE)
     source = models.CharField(max_length=200, null=True, blank=True)
@@ -25,6 +25,14 @@ class News(models.Model):
 
     class Meta:
         verbose_name_plural = "Newses"
+
+    @property
+    def short_description(self):
+        desc = self.description[:130]
+        desc = desc.replace('\n', '')
+        desc = desc.replace('\t', '')
+        desc = desc.lstrip()
+        return desc
 
     def __str__(self):
         return self.title

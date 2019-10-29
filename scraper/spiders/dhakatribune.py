@@ -10,25 +10,24 @@ class DhakaTribuneSpider(scrapy.Spider):
     allowed_domains = ['bangla.dhakatribune.com']
 
     start_urls = [
-            'https://bangla.dhakatribune.com/articles/bangladesh/page/1',
-            'https://bangla.dhakatribune.com/articles/politics/page/1',
-            'https://bangla.dhakatribune.com/articles/international/page/1',
-            'https://bangla.dhakatribune.com/articles/economy/page/1',
-            'https://bangla.dhakatribune.com/articles/sports/page/1',
-            'https://bangla.dhakatribune.com/articles/entertainment/page/1',
-            'https://bangla.dhakatribune.com/articles/tech/page/1',
-            'https://bangla.dhakatribune.com/articles/features/page/1',
-            'https://bangla.dhakatribune.com/articles/opinion/page/1'
+            'https://bangla.dhakatribune.com/articles/bangladesh',
+            'https://bangla.dhakatribune.com/articles/politics',
+            'https://bangla.dhakatribune.com/articles/international',
+            'https://bangla.dhakatribune.com/articles/economy',
+            'https://bangla.dhakatribune.com/articles/sports',
+            'https://bangla.dhakatribune.com/articles/entertainment',
+            'https://bangla.dhakatribune.com/articles/tech',
+            'https://bangla.dhakatribune.com/articles/features',
+            'https://bangla.dhakatribune.com/articles/opinion'
         ]
 
     user_agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1"
 
     def parse(self, response):
         for news_url in response.css('.listing-page-news div div div a ::attr("href")').extract():
-            if news_url == '/articles/bangladesh':
+            if news_url == '/articles/bangladesh' or news_url == '/articles/politics' or news_url == '/articles/features' or news_url == '/articles/tech' or news_url == '/articles/entertainment' or news_url == '/articles/sports' or news_url == '/articles/opinion' or news_url == '/articles/international' or news_url == '/articles/economy':
                 pass
             else:
-                # print(news_url)
                 yield response.follow(news_url, callback=self.parse_news)
 
     def parse_news(self, response):
@@ -43,21 +42,23 @@ class DhakaTribuneSpider(scrapy.Spider):
         item = AllNewsItem()
 
         item['title'] = response.css('h1::text').extract_first()
-        desc = listToString(response.css('.report-content p ::text').extract())
+        description = response.css('.report-content p ::text').extract()
+        description = [x.strip() + '\n\n' for x in description]
+        description = listToString(description)
         highlighted = response.css('.highlighted-content ::text').extract_first()
         if highlighted:
-            desc = desc.replace(highlighted, highlighted+'। &npsp;')
-        item['description'] = desc
+            description = description.replace(highlighted, highlighted+'। ')
+        item['description'] = description
         item['image'] = response.css('.reports-big-img img::attr(src)').extract_first()
         item['url'] = response.request.url
-        item['source'] = 'Dhaka Tribune'
+        item['source'] = 'dhaka_tribune'
 
         if 'sports' in response.request.url:
             self.category = 'sports'
         if 'bangladesh' in response.request.url:
             self.category = 'bangladesh'
         if 'politics' in response.request.url:
-            self.category = 'bangladesh'
+            self.category = 'politics'
         if 'international' in response.request.url:
             self.category = 'international'
         if 'economy' in response.request.url:
@@ -73,26 +74,5 @@ class DhakaTribuneSpider(scrapy.Spider):
 
         item['category'] = Category.objects.get(name=self.category)
 
-
-
         yield item
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# , meta = {'category': self.category}
-# item['category'] = response.meta.get('category')

@@ -13,7 +13,7 @@ class AllNewsSerializerListView(serializers.ModelSerializer):
 
     class Meta:
         model = AllNews
-        fields = ['id', 'title', 'short_description', 'image', 'date']
+        fields = ['id', 'title', 'short_description', 'image', 'source', 'date']
 
 
 

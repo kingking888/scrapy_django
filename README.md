@@ -9,7 +9,7 @@ An android application where news are displayed from most popular Bangla newspap
 ### Prerequisites
 
 ```
-Django REST API, Android
+Django, Django REST API, Android
 ```
 
 ## Built With

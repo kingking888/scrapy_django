@@ -24,15 +24,17 @@ class NTVBDSpider(scrapy.Spider):
     try:
         news_db_urls = News.objects.filter(source='ntv_bd').values_list('url', flat=True)
         news_db_urls = list(news_db_urls)
-        news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
+        # news_db_urls = [x.rsplit('/', 1)[0] for x in news_db_urls]
     except Exception as e:
         news_db_urls = []
 
     def parse(self, response):
-        crawled_urls = response.css('#cat_parent_content_list a ::attr("href")').extract()
+        crawled_urls = response.css('.pane-category-top a ::attr("href")').extract()
 
-        news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
-        unique_urls = list(set(news_urls) - set(self.news_db_urls))
+        print(crawled_urls)
+
+        # news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
+        unique_urls = list(set(crawled_urls) - set(self.news_db_urls))
 
 
         for news_url in unique_urls:
@@ -53,12 +55,12 @@ class NTVBDSpider(scrapy.Spider):
 
         item = AllNewsItem()
 
-        item['title'] = response.css('h1 ::text').extract_first()
-        description = response.css('.dtl_section p ::text').extract()
+        item['title'] = response.css('.color-blue ::text').extract_first()
+        description = response.css('.section-content p ::text').extract()
         description = [x.strip() + '\n\n' for x in description]
         item['description'] = listToString(description)
-        item['image'] = response.css('.dtl_img_section img::attr(src)').extract_first()
-        item['url'] = response.request.url + '/'
+        item['image'] = response.css('.medium-6 img::attr(data-srcset)').extract_first()
+        item['url'] = response.request.url
         item['source'] = 'ntv_bd'
 
         if 'sports' in response.request.url:

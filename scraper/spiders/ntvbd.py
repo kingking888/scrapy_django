@@ -55,7 +55,7 @@ class NTVBDSpider(scrapy.Spider):
 
         item['title'] = response.css('.color-blue ::text').extract_first()
         description = response.css('.section-content p ::text').extract()
-        description = ['\n\n' + x.strip() if "," not in x else x for x in description]
+        description = ['\n\n' + x.strip() for x in description]
         item['description'] = listToString(description)
         item['image'] = response.css('.medium-6 img::attr(data-srcset)').extract_first()
         item['url'] = response.request.url

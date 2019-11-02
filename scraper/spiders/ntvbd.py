@@ -31,8 +31,6 @@ class NTVBDSpider(scrapy.Spider):
     def parse(self, response):
         crawled_urls = response.css('.pane-category-top a ::attr("href")').extract()
 
-        print(crawled_urls)
-
         # news_urls = [x.rsplit('/', 1)[0] for x in crawled_urls]
         unique_urls = list(set(crawled_urls) - set(self.news_db_urls))
 

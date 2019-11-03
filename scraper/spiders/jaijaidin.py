@@ -37,7 +37,6 @@ class JaijaidinSpider(scrapy.Spider):
 
         for news_url in unique_urls:
             if 'all-news' not in news_url:
-                print(news_url)
                 yield response.follow(news_url, callback=self.parse_news)
             else:
                 pass
@@ -45,7 +44,6 @@ class JaijaidinSpider(scrapy.Spider):
 
 
     def parse_news(self, response):
-        print("called")
 
         def listToString(s):
             # initialize an empty string
@@ -57,7 +55,6 @@ class JaijaidinSpider(scrapy.Spider):
         item = AllNewsItem()
         item['title'] = response.css('.headline_section h1::text').extract_first()
         description = response.css('#myText ::text').extract()
-        print(description)
         description = [x.strip() + '\n\n' for x in description]
         description = listToString(description)
         item['description'] = description

@@ -1,5 +1,5 @@
 # BDNews Today
-An android application where news are displayed from most popular Bangla newspapers which are collected using this Scrapy-Django integration as a backend API that includes proper authentication. 
+An android application where news are displayed from most popular Bangla newspapers which are collected using this **Scrapy-Django** integration as a backend API that includes proper authentication. 
 
 ## Authors
 
@@ -28,6 +28,22 @@ Django, Django REST API, Android
   * [Volley 1.1.1](https://developer.android.com/training/volley) - HTTP library
   * [Glide 4.10.0](https://github.com/bumptech/glide) - Image loading framework
   * [Skeleton 1.1.2](https://github.com/ethanhua/Skeleton) - Skeleton loading view 
+
+## App Features
+
+  * Browse highlight news (landing view)
+  * Search from all news in highlight  view
+  * Browse categorical news
+  * Filter seach by category in News view
+  * Pull to refresh news / highlight view
+  * View detailed News
+  * Save news from news list and news details view
+  * Zoom image from detailed news section
+  * Change theme (light and dark)
+  * Clear cache
+  * View saved news in offline 
+  * Offline cache enabled for highlight and news view so that user can browse those cached news in offline.
+  
   
 ## App Screenshots
 ### Home View

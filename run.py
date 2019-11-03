@@ -6,6 +6,7 @@ def subprocess_cmd(command):
     print(proc_stdout)
 
 
+subprocess_cmd('python manage.py jaijaidin_crawl')
 subprocess_cmd('python manage.py samakal_crawl')
 subprocess_cmd('python manage.py ntvbd_crawl')
 subprocess_cmd('python manage.py jagonews24_crawl')

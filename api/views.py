@@ -218,7 +218,7 @@ class NewsCategoryApiView(generics.ListAPIView):
 class DetailNewsApiView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
-    # @method_decorator(cache_page(60))
+    @method_decorator(cache_page(10 * 60))
     def get(self, request, pk):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)

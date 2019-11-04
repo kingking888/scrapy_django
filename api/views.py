@@ -7,6 +7,9 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import filters
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 import datetime
 import random
 
@@ -202,6 +205,7 @@ class NewsCategoryApiView(generics.ListAPIView):
 
         return queryset
 
+    @method_decorator(cache_page(60))
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         qs = self.filter_queryset(queryset)

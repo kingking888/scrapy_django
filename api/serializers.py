@@ -27,6 +27,13 @@ class AllNewsSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 
+class DetailNewsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = AllNews
+        fields = ('description', 'url')
+
+
 class AllNewsCategorySerializer(serializers.ModelSerializer):
     newses = AllNewsSerializer(many=True, read_only=True)
 

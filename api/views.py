@@ -17,7 +17,7 @@ from all_news.models import News as AllNews
 from all_news.models import Category as AllNewsCategory
 
 
-from .serializers import AllNewsSerializerListView, AllNewsSerializerRecentView, AllNewsCategorySerializer, AllNewsSerializer
+from .serializers import AllNewsSerializerListView, AllNewsSerializerRecentView, AllNewsCategorySerializer, AllNewsSerializer, DetailNewsSerializer
 
 hours = 24
 latest_hours = 2
@@ -224,7 +224,7 @@ class DetailNewsApiView(APIView):
         earlier = now - datetime.timedelta(hours=hours)
 
         news = get_object_or_404(AllNews, pk=pk, date__range=(earlier, now))
-        data = AllNewsSerializer(news).data
+        data = DetailNewsSerializer(news).data
         return Response(data)
 
 

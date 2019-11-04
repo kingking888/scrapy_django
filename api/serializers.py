@@ -5,18 +5,18 @@ from all_news.models import Category as AllNewsCategory
 
 
 class AllNewsSerializerListView(serializers.ModelSerializer):
-    # category = serializers.StringRelatedField()
     short_description = serializers.CharField()
-
-    # def get_short_description(self, obj):
-    #     return AllNews.description[:200]
 
     class Meta:
         model = AllNews
         fields = ['id', 'title', 'short_description', 'image', 'source', 'date']
 
 
+class AllNewsSerializerRecentView(serializers.ModelSerializer):
 
+    class Meta:
+        model = AllNews
+        fields = ['id', 'title', 'image', 'source', 'date']
 
 
 class AllNewsSerializer(serializers.ModelSerializer):

@@ -14,10 +14,10 @@ from all_news.models import News as AllNews
 from all_news.models import Category as AllNewsCategory
 
 
-from .serializers import AllNewsSerializerListView, AllNewsCategorySerializer, AllNewsSerializer
+from .serializers import AllNewsSerializerListView, AllNewsSerializerRecentView, AllNewsCategorySerializer, AllNewsSerializer
 
 hours = 24
-latest_hours = 2
+latest_hours = 24
 
 
 
@@ -69,7 +69,7 @@ latest_hours = 2
 
 class RecentApiView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = AllNewsSerializerListView
+    serializer_class = AllNewsSerializerRecentView
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['title', 'description', '=source']
@@ -99,7 +99,7 @@ class RecentApiView(generics.ListAPIView):
             for value in rand_values:
                 rand_items.append(qs[value])
 
-        serializer = AllNewsSerializerListView(rand_items, many=True)
+        serializer = AllNewsSerializerRecentView(rand_items, many=True)
         page = self.paginate_queryset(serializer.data)
         return self.get_paginated_response(page)
 

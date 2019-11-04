@@ -224,8 +224,22 @@ class DetailNewsApiView(APIView):
         earlier = now - datetime.timedelta(hours=hours)
 
         news = get_object_or_404(AllNews, pk=pk, date__range=(earlier, now))
-        data = DetailNewsSerializer(news).data
+        data = AllNewsSerializer(news).data
         return Response(data)
+
+
+# class DetailNewsApiView(APIView):
+#     permission_classes = (permissions.IsAuthenticated,)
+#
+#     # @method_decorator(cache_page(10 * 60))
+#     def get(self, request, pk):
+#         now = datetime.datetime.now()
+#         earlier = now - datetime.timedelta(hours=hours)
+#
+#         news = get_object_or_404(AllNews, pk=pk, date__range=(earlier, now))
+#         data = DetailNewsSerializer(news).data
+#         return Response(data)
+#
 
 
 class AllCategoryApiView(generics.ListAPIView):

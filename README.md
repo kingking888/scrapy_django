@@ -14,7 +14,7 @@ Django, Django REST API, Android
 
 ## Built With
 #### API
-* [Django 2.2.6](https://docs.djangoproject.com/en/2.2/releases/2.2.6/) - Core API framework
+* [Django 2.2.6](https://docs.djangoproject.com/en/2.2/releases/2.2.6/) - Core framework
 * [Django Rest Framework 3.10.3](https://www.django-rest-framework.org/) - API toolkit
 * [Scrapy 1.7.3](https://scrapy.org/) - Web-Crawling Framework 
 * [Python 3.7](https://www.python.org/downloads/release/python-370/) - Core language

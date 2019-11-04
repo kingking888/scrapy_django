@@ -141,6 +141,7 @@ class RecentApiView(generics.ListAPIView):
         queryset = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
         return queryset
 
+    @method_decorator(cache_page(60))
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         qs = self.filter_queryset(queryset)
@@ -217,6 +218,7 @@ class NewsCategoryApiView(generics.ListAPIView):
 class DetailNewsApiView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
+    @method_decorator(cache_page(60))
     def get(self, request, pk):
         now = datetime.datetime.now()
         earlier = now - datetime.timedelta(hours=hours)

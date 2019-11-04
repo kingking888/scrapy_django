@@ -47,19 +47,38 @@ Django, Django REST API, Android
   
 ## App Screenshots
 ### Home View
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/home_view.png "Home light")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/dark_mode_home.png " Home dark")
+
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/home_view.png" width="500" height="1000" title="Home light" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/dark_mode_home.png" width="500" height="1000" title="Home dark" />
 
 ### Categorical News view
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_categorical_view.png "News light")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/dark_mode_news.png "News dark")
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_categorical_view.png" width="500" height="1000" title="News light" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/dark_mode_news.png" width="500" height="1000" title="News dark" />
+
+### More view
+
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/more_light.png" width="500" height="1000" title="More light" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/more_dark.png" width="500" height="1000" title="More dark" />
+
+### Saved news view
+
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/saved_news_light.png" width="500" height="1000" title="Saved news  light" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/saved_news_dark.png" width="500" height="1000" title="Saved news  dark" />
 
 ### News Details
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details.png "News Details")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details_dark.png "News Details")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details_web.png "News Details Web")
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details.png" width="500" height="1000" title="News Details" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details_dark.png" width="500" height="1000" title="News Details Dark" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/news_details_web.png" width="500" height="1000" title="News Details Web" />
 
 ### Skeleton view
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view.png "Skeleton View")
-![alt text](https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_dark.png "Skeleton View Dark")
 
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_light_highlight.png" width="500" height="1000" title="Skeleton View highlight light" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_dark_highlight.png" width="500" height="1000" title="Skeleton View Dark" />
+
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_light_news.png" width="500" height="1000" title="Skeleton View highlight light News" />
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/skeleton_view_dark_news.png" width="500" height="1000" title="Skeleton View Dark News" />
+
+
+### Zoom image dialog
+
+<img src="https://github.com/tohfaakib/scrapy_django/blob/android_stable/Android/screenshots/zoom_image_dialog.png" width="500" height="1000" title="Zoom image dialog" />

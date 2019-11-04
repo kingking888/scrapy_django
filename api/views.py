@@ -71,60 +71,9 @@ latest_hours = 2
 #################### needed #############################
 
 
-class RecentApiView(generics.ListAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = AllNewsSerializerRecentView
-
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'description', '=source']
-
-    pagination_class = PageNumberPagination
-
-    def get_queryset(self, *args, **kwargs):
-        now = datetime.datetime.now()
-        earlier = now - datetime.timedelta(hours=latest_hours)
-        name = self.kwargs['name']
-        queryset = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
-        return queryset
-
-    def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        qs = self.filter_queryset(queryset)
-        rand_item_count = len(qs)
-        if rand_item_count >= 3:
-            rand_values = random.sample(range(rand_item_count), 3)
-        elif 3 > rand_item_count > 0:
-            rand_values = random.sample(range(rand_item_count), rand_item_count)
-        else:
-            rand_values = []
-        rand_items = []
-        if rand_values:
-            rand_values.sort()
-            for value in rand_values:
-                rand_items.append(qs[value])
-
-        serializer = AllNewsSerializerRecentView(rand_items, many=True)
-        page = self.paginate_queryset(serializer.data)
-        return self.get_paginated_response(page)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # class RecentApiView(generics.ListAPIView):
 #     permission_classes = [permissions.IsAuthenticated]
-#     serializer_class = AllNewsSerializerListView
+#     serializer_class = AllNewsSerializerRecentView
 #
 #     filter_backends = [filters.SearchFilter]
 #     search_fields = ['title', 'description', '=source']
@@ -154,9 +103,60 @@ class RecentApiView(generics.ListAPIView):
 #             for value in rand_values:
 #                 rand_items.append(qs[value])
 #
-#         serializer = AllNewsSerializerListView(rand_items, many=True)
+#         serializer = AllNewsSerializerRecentView(rand_items, many=True)
 #         page = self.paginate_queryset(serializer.data)
 #         return self.get_paginated_response(page)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class RecentApiView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AllNewsSerializerListView
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'description', '=source']
+
+    pagination_class = PageNumberPagination
+
+    def get_queryset(self, *args, **kwargs):
+        now = datetime.datetime.now()
+        earlier = now - datetime.timedelta(hours=latest_hours)
+        name = self.kwargs['name']
+        queryset = AllNews.objects.filter(category__name=name, date__range=(earlier, now)).order_by('-pk')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        qs = self.filter_queryset(queryset)
+        rand_item_count = len(qs)
+        if rand_item_count >= 3:
+            rand_values = random.sample(range(rand_item_count), 3)
+        elif 3 > rand_item_count > 0:
+            rand_values = random.sample(range(rand_item_count), rand_item_count)
+        else:
+            rand_values = []
+        rand_items = []
+        if rand_values:
+            rand_values.sort()
+            for value in rand_values:
+                rand_items.append(qs[value])
+
+        serializer = AllNewsSerializerListView(rand_items, many=True)
+        page = self.paginate_queryset(serializer.data)
+        return self.get_paginated_response(page)
 
 
 class NewsApiView(generics.ListAPIView):

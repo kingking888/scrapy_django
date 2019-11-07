@@ -53,7 +53,10 @@ class NTVBDSpider(scrapy.Spider):
 
         item = AllNewsItem()
 
-        item['title'] = response.css('.color-blue ::text').extract_first()
+        title = response.css('.color-blue ::text').extract_first()
+        title = str(title).strip()
+        title = title.strip('\n')
+        item['title'] = title
         description = response.css('.section-content p ::text').extract()
         description = ['\n\n' + x.strip() if "," != x in x else x for x in description]
         description = listToString(description).replace("'", "")

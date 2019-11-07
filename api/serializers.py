@@ -31,7 +31,7 @@ class DetailNewsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AllNews
-        fields = ('description', 'url')
+        fields = ('id', 'description', 'url')
 
 
 class AllNewsCategorySerializer(serializers.ModelSerializer):
